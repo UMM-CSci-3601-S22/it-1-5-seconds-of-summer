@@ -1,0 +1,8 @@
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <app-user-card *ngIf="(user$ | async) as user; else loading"[user]="user"></app-user-card>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+</div>
