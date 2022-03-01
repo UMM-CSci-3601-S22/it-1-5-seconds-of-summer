@@ -1,5 +1,5 @@
 # Build the client files in a build stage
-FROM node:16-alpine as ngbuild
+FROM node:17-alpine as ngbuild
 
 WORKDIR /client
 
