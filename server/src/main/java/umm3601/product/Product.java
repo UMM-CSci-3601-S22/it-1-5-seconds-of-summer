@@ -28,7 +28,13 @@ public class Product {
   @SuppressWarnings({"MemberName"})
   public String _id;
 
-  public String prdName;
+  public String product_name;
+  public String description;
+  public String brand;
+  public String category;
+  public String location;
+  public String notes;
+  public int lifespan;
   public int threshold;
   public String store;
 }

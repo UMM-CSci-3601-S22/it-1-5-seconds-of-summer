@@ -4,6 +4,7 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.regex;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,14 @@ import io.javalin.http.NotFoundResponse;
 public class ProductController {
 
   private static final String THRESHOLD_KEY = "threshold";
-  private static final String PRD_NAME_KEY = "prdName";
+  private static final String PRD_NAME_KEY = "product_name";
   private static final String STORE_KEY = "store";
+  private static final String DESC_KEY = "description";
+  private static final String BRAND_KEY = "brand";
+  private static final String CATEGORY_KEY = "category";
+  private static final String LOCATION_KEY = "location";
+  private static final String NOTES_KEY = "notes";
+  private static final String LIFESPAN_KEY = "lifespan";
 
   private final JacksonMongoCollection<Product> productCollection;
 
@@ -57,9 +64,13 @@ public class ProductController {
   public void getProduct(Context ctx) {
     String id = ctx.pathParam("id");
     Product product;
+    System.out.println(id);
+    System.out.println(productCollection.find().first());
+    System.out.println("Got the first");
 
     try {
       product = productCollection.find(eq("_id", new ObjectId(id))).first();
+      System.out.println(product);
     } catch (IllegalArgumentException e) {
       throw new BadRequestResponse("The requested product id wasn't a legal Mongo Object ID.");
     }
@@ -67,6 +78,7 @@ public class ProductController {
       throw new NotFoundResponse("The requested product was not found");
     } else {
       ctx.json(product);
+      System.out.println(ctx);
     }
   }
 
@@ -76,6 +88,7 @@ public class ProductController {
    * @param ctx a Javalin HTTP context
    */
   public void getProducts(Context ctx) {
+    System.err.println("PLEASe");
     Bson combinedFilter = constructFilter(ctx);
     Bson sortingOrder = constructSortingOrder(ctx);
 
@@ -84,9 +97,9 @@ public class ProductController {
     // properties, return those sorted in the specified manner, and put the
     // results into an initially empty ArrayList.
     ArrayList<Product> matchingProducts = productCollection
-      .find(combinedFilter)
-      .sort(sortingOrder)
-      .into(new ArrayList<>());
+        .find(combinedFilter)
+        .sort(sortingOrder)
+        .into(new ArrayList<>());
 
     // Set the JSON body of the response to be the list of products returned by
     // the database.
@@ -96,16 +109,48 @@ public class ProductController {
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>(); // start with a blank document
 
-    if (ctx.queryParamMap().containsKey(THRESHOLD_KEY)) {
-        int targetAge = ctx.queryParamAsClass(THRESHOLD_KEY, Integer.class).get();
-        filters.add(eq(THRESHOLD_KEY, targetAge));
-    }
+    System.err.println("dowe get hyere");
+
     if (ctx.queryParamMap().containsKey(PRD_NAME_KEY)) {
-      filters.add(regex(PRD_NAME_KEY,  Pattern.quote(ctx.queryParam(PRD_NAME_KEY)), "i"));
+      filters.add(regex(PRD_NAME_KEY, Pattern.quote(ctx.queryParam(PRD_NAME_KEY)), "i"));
+      System.err.println(1);
     }
     if (ctx.queryParamMap().containsKey(STORE_KEY)) {
       filters.add(eq(STORE_KEY, ctx.queryParam(STORE_KEY)));
+      System.err.println(2);
     }
+    if (ctx.queryParamMap().containsKey(BRAND_KEY)) {
+      filters.add(regex(BRAND_KEY, Pattern.quote(ctx.queryParam(BRAND_KEY)), "i"));
+      System.err.println(3);
+    }
+    if (ctx.queryParamMap().containsKey(LOCATION_KEY)) {
+      filters.add(regex(LOCATION_KEY, Pattern.quote(ctx.queryParam(LOCATION_KEY)), "i"));
+      System.err.println(4);
+    }
+    if (ctx.queryParamMap().containsKey(DESC_KEY)) {
+      filters.add(regex(DESC_KEY, Pattern.quote(ctx.queryParam(DESC_KEY)), "i"));
+      System.err.println(5);
+    }
+    if (ctx.queryParamMap().containsKey(NOTES_KEY)) {
+      filters.add(regex(NOTES_KEY, Pattern.quote(ctx.queryParam(NOTES_KEY)), "i"));
+      System.err.println(6);
+    }
+    if (ctx.queryParamMap().containsKey(LIFESPAN_KEY)) {
+      int targetLifespan = ctx.queryParamAsClass(LIFESPAN_KEY, Integer.class).get();
+      filters.add(eq(LIFESPAN_KEY, targetLifespan));
+      System.err.println(6);
+    }
+    if (ctx.queryParamMap().containsKey(CATEGORY_KEY)) {
+      filters.add(regex(CATEGORY_KEY, Pattern.quote(ctx.queryParam(CATEGORY_KEY)), "i"));
+      System.err.println(7);
+    }
+    if (ctx.queryParamMap().containsKey(THRESHOLD_KEY)) {
+      int targetThreshold = ctx.queryParamAsClass(THRESHOLD_KEY, Integer.class).get();
+      filters.add(eq(THRESHOLD_KEY, targetThreshold));
+      System.err.println(0);
+    }
+
+    System.err.println("skips??");
 
     // Combine the list of filters into a single filtering document.
     Bson combinedFilter = filters.isEmpty() ? new Document() : and(filters);
@@ -119,7 +164,7 @@ public class ProductController {
     // "asc") to specify the sort order.
     String sortBy = Objects.requireNonNullElse(ctx.queryParam("sortby"), "name");
     String sortOrder = Objects.requireNonNullElse(ctx.queryParam("sortorder"), "asc");
-    Bson sortingOrder = sortOrder.equals("desc") ?  Sorts.descending(sortBy) : Sorts.ascending(sortBy);
+    Bson sortingOrder = sortOrder.equals("desc") ? Sorts.descending(sortBy) : Sorts.ascending(sortBy);
     return sortingOrder;
   }
 
@@ -133,18 +178,19 @@ public class ProductController {
      * The follow chain of statements uses the Javalin validator system
      * to verify that instance of `Product` provided in this context is
      * a "legal" product. It checks the following things (in order):
-     *    - The product has a value for the name (`usr.name != null`)
-     *    - The product name is not blank (`usr.name.length > 0`)
-     *    - The provided email is valid (matches EMAIL_REGEX)
-     *    - The provided age is > 0
-     *    - The provided role is valid (one of "admin", "editor", or "viewer")
-     *    - A non-blank company is provided
+     * - The product has a value for the name (`usr.name != null`)
+     * - The product name is not blank (`usr.name.length > 0`)
+     * - The provided email is valid (matches EMAIL_REGEX)
+     * - The provided age is > 0
+     * - The provided role is valid (one of "admin", "editor", or "viewer")
+     * - A non-blank company is provided
      */
     Product newProduct = ctx.bodyValidator(Product.class)
-      .check(usr -> usr.prdName != null && usr.prdName.length() > 0, "Product must have a non-empty product name")
-      .check(usr -> usr.threshold >= 0, "Product's threshold must be greater than or equal to zero")
-      .check(usr -> usr.store.matches("^(willies|coop)$"), "Product must have a legal store")
-      .get();
+        .check(usr -> usr.product_name != null && usr.product_name.length() > 0,
+            "Product must have a non-empty product name")
+        .check(usr -> usr.threshold >= 0, "Product's threshold must be greater than or equal to zero")
+        .check(usr -> usr.store.matches("^(willies|coop)$"), "Product must have a legal store")
+        .get();
 
     productCollection.insertOne(newProduct);
 
@@ -166,9 +212,9 @@ public class ProductController {
     DeleteResult deleteResult = productCollection.deleteOne(eq("_id", new ObjectId(id)));
     if (deleteResult.getDeletedCount() != 1) {
       throw new NotFoundResponse(
-        "Was unable to delete ID "
-          + id
-          + "; perhaps illegal ID or an ID for an item not in the system?");
+          "Was unable to delete ID "
+              + id
+              + "; perhaps illegal ID or an ID for an item not in the system?");
     }
   }
 }
