@@ -12,17 +12,39 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getProducts(filters?: { category?: ProductCategory; lifespan?: number; brand?: string }): Observable<Product[]> {
+  getProducts(filters?: {
+    productName?: string;
+    brand?: string;
+    category?: ProductCategory;
+    store?: ShoppingStore;
+    location?: string;
+    tags?: string;
+    lifespan?: number;
+    threshold?: number; }): Observable<Product[]> {
+
     let httpParams: HttpParams = new HttpParams();
+
     if (filters) {
+      if (filters.brand) {
+        httpParams = httpParams.set('brand', filters.brand);
+      }
       if (filters.category) {
         httpParams = httpParams.set('category', filters.category);
+      }
+      if (filters.store) {
+        httpParams = httpParams.set('store', filters.store);
+      }
+      if (filters.location) {
+        httpParams = httpParams.set('location', filters.location);
+      }
+      if (filters.tags) {
+        httpParams = httpParams.set('tags', filters.tags);
       }
       if (filters.lifespan) {
         httpParams = httpParams.set('lifespan', filters.lifespan.toString());
       }
-      if (filters.brand) {
-        httpParams = httpParams.set('brand', filters.brand);
+      if (filters.threshold) {
+        httpParams = httpParams.set('threshold', filters.threshold.toString());
       }
     }
     return this.httpClient.get<Product[]>(this.productUrl, {
@@ -34,7 +56,9 @@ export class ProductService {
     return this.httpClient.get<Product>(this.productUrl + '/' + id);
   }
 
-  filterProducts(products: Product[], filters: { productName?: string; brand?: string }): Product[] {
+
+  //Filter all string type
+  filterProducts(products: Product[], filters: { productName?: string; brand?: string; location?: string; tags?: string }): Product[] {
 
     let filteredProducts = products;
 
@@ -44,12 +68,23 @@ export class ProductService {
 
       filteredProducts = filteredProducts.filter(product => product.productName.toLowerCase().indexOf(filters.productName) !== -1);
     }
-
     // Filter by brand
     if (filters.brand) {
       filters.brand = filters.brand.toLowerCase();
 
       filteredProducts = filteredProducts.filter(product => product.brand.toLowerCase().indexOf(filters.brand) !== -1);
+    }
+    // Filter by location
+    if (filters.location) {
+      filters.location = filters.location.toLowerCase();
+
+      filteredProducts = filteredProducts.filter(product => product.location.toLowerCase().indexOf(filters.location) !== -1);
+    }
+    // Filter by tags
+    if (filters.tags) {
+      filters.tags = filters.tags.toLowerCase();
+
+      filteredProducts = filteredProducts.filter(product => product.tags.toLowerCase().indexOf(filters.tags) !== -1);
     }
 
     return filteredProducts;
