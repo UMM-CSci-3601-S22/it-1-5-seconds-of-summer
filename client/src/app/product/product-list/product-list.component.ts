@@ -79,5 +79,4 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.getProductSub.unsubscribe();
     }
   }
-
 }
