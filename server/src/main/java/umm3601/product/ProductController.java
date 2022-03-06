@@ -4,7 +4,6 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.regex;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -101,16 +100,11 @@ public class ProductController {
         .sort(sortingOrder)
         .into(new ArrayList<>());
 
-    // Set the JSON body of the response to be the list of products returned by
-    // the database.
-    ctx.json(matchingProducts);
+    // Set the JSON body of the response toshow collections
   }
 
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>(); // start with a blank document
-
-    System.err.println("dowe get hyere");
-
     if (ctx.queryParamMap().containsKey(PRD_NAME_KEY)) {
       filters.add(regex(PRD_NAME_KEY, Pattern.quote(ctx.queryParam(PRD_NAME_KEY)), "i"));
       System.err.println(1);
@@ -118,31 +112,6 @@ public class ProductController {
     if (ctx.queryParamMap().containsKey(STORE_KEY)) {
       filters.add(eq(STORE_KEY, ctx.queryParam(STORE_KEY)));
       System.err.println(2);
-    }
-    if (ctx.queryParamMap().containsKey(BRAND_KEY)) {
-      filters.add(regex(BRAND_KEY, Pattern.quote(ctx.queryParam(BRAND_KEY)), "i"));
-      System.err.println(3);
-    }
-    if (ctx.queryParamMap().containsKey(LOCATION_KEY)) {
-      filters.add(regex(LOCATION_KEY, Pattern.quote(ctx.queryParam(LOCATION_KEY)), "i"));
-      System.err.println(4);
-    }
-    if (ctx.queryParamMap().containsKey(DESC_KEY)) {
-      filters.add(regex(DESC_KEY, Pattern.quote(ctx.queryParam(DESC_KEY)), "i"));
-      System.err.println(5);
-    }
-    if (ctx.queryParamMap().containsKey(NOTES_KEY)) {
-      filters.add(regex(NOTES_KEY, Pattern.quote(ctx.queryParam(NOTES_KEY)), "i"));
-      System.err.println(6);
-    }
-    if (ctx.queryParamMap().containsKey(LIFESPAN_KEY)) {
-      int targetLifespan = ctx.queryParamAsClass(LIFESPAN_KEY, Integer.class).get();
-      filters.add(eq(LIFESPAN_KEY, targetLifespan));
-      System.err.println(6);
-    }
-    if (ctx.queryParamMap().containsKey(CATEGORY_KEY)) {
-      filters.add(regex(CATEGORY_KEY, Pattern.quote(ctx.queryParam(CATEGORY_KEY)), "i"));
-      System.err.println(7);
     }
     if (ctx.queryParamMap().containsKey(THRESHOLD_KEY)) {
       int targetThreshold = ctx.queryParamAsClass(THRESHOLD_KEY, Integer.class).get();

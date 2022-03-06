@@ -14,6 +14,7 @@ import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 import io.javalin.http.InternalServerErrorResponse;
 import umm3601.user.UserController;
+import umm3601.pantry.PantryController;
 import umm3601.product.ProductController;
 
 public class Server {
@@ -45,6 +46,7 @@ public class Server {
     // Initialize dependencies
     UserController userController = new UserController(database);
     ProductController productController = new ProductController(database);
+    PantryController pantryController = new PantryController(database);
 
     Javalin server = Javalin.create(config -> config.registerPlugin(new RouteOverviewPlugin("/api")));
     /*
@@ -82,6 +84,14 @@ public class Server {
     server.delete("/api/products/{id}", productController::deleteProduct);
 
     server.post("/api/products", productController::addNewProduct);
+
+    server.get("/api/pantry", pantryController::getPantrys);
+
+    server.get("/api/pantry/{id}", pantryController::getPantry);
+
+    server.delete("/api/pantry/{id}", pantryController::deletePantry);
+
+    server.post("/api/pantry", pantryController::addNewPantry);
 
     // This catches any uncaught exceptions thrown in the server
     // code and turns them into a 500 response ("Internal Server
