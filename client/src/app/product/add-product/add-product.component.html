@@ -1,1 +1,82 @@
-<p>add-product works!</p>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <form [formGroup]="addProductForm" (ngSubmit)="submitForm();">
+    <mat-card class="add-product-card">
+        <mat-card-header>
+          <mat-card-title class="add-product-title">New Product</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name"
+                  required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.name">
+              <mat-error class="error-message" data-test="nameError"
+                        *ngIf="addProductForm.get('name').hasError(validation.type) && (addProductForm.get('name').dirty || addProductForm.get('name').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number" placeholder="Age"
+                  formControlName="age" required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.age">
+              <mat-error class="error-message" data-test="ageError"
+                        *ngIf="addProductForm.get('age').hasError(validation.type) && (addProductForm.get('age').dirty || addProductForm.get('age').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Company</mat-label>
+            <input matInput placeholder="Company"
+                  formControlName="company">
+            <mat-hint>Not required in Angular for demonstration, still required by server</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email"
+                  formControlName="email" required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.email">
+              <mat-error class="error-message" data-test='emailError'
+                        *ngIf="addProductForm.get('email').hasError(validation.type) && (addProductForm.get('email').dirty || addProductForm.get('email').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <mat-select required formControlName="role">
+              <mat-option value="admin">Admin</mat-option>
+              <mat-option value="editor">Editor</mat-option>
+              <mat-option value="viewer">Viewer</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addProductForm.get('role').hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="addProductForm.get('role').hasError('pattern') && !addProductForm.get('role').hasError('required')">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button
+            mat-button
+            type="button"
+            color="primary"
+            [disabled]="!addProductForm.valid"
+            type="submit"
+            data-test="confirmAddProductButton"
+          >
+            ADD PRODUCT
+          </button>
+        </mat-card-actions>
+    </mat-card>
+  </form>
+  </div>
+</div>
+

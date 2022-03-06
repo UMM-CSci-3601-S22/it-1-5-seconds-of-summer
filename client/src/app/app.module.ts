@@ -32,7 +32,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { UserCardComponent } from './users/user-card.component';
 import { UserProfileComponent } from './users/user-profile.component';
 import { AddUserComponent } from './users/add-user.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductProfileComponent } from './product/product-profile/product-profile.component';
 import { ProductCardComponent } from './product/product-card/product-card.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
