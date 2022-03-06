@@ -13,7 +13,7 @@ export class ProductService {
   }
 
   getProducts(filters?: {
-    productName?: string;
+    name?: string;
     description: string;
     brand?: string;
     category?: ProductCategory;
@@ -27,8 +27,8 @@ export class ProductService {
     let httpParams: HttpParams = new HttpParams();
 
     if (filters) {
-      if (filters.productName) {
-        httpParams = httpParams.set('productName', filters.productName);
+      if (filters.name) {
+        httpParams = httpParams.set('name', filters.name);
       }
       if (filters.brand) {
         httpParams = httpParams.set('brand', filters.brand);
@@ -70,7 +70,7 @@ export class ProductService {
 
   //Filter all string type
   filterProducts(products: Product[], filters: {
-    productName?: string;
+    name?: string;
     description?: string;
     brand?: string;
     category?: ProductCategory;
@@ -83,11 +83,11 @@ export class ProductService {
 
     let filteredProducts = products;
 
-    // Filter by productName
-    if (filters.productName) {
-      filters.productName = filters.productName.toLowerCase();
+    // Filter by name
+    if (filters.name) {
+      filters.name = filters.name.toLowerCase();
 
-      filteredProducts = filteredProducts.filter(product => product.productName.toLowerCase().indexOf(filters.productName) !== -1);
+      filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().indexOf(filters.name) !== -1);
     }
     // Filter by description
     if (filters.description) {

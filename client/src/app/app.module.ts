@@ -33,6 +33,7 @@ import { UserCardComponent } from './users/user-card.component';
 import { UserProfileComponent } from './users/user-profile.component';
 import { AddUserComponent } from './users/add-user.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductProfileComponent } from './product/product-profile/product-profile.component';
 
 const MATERIAL_MODULES: any[] = [
   MatListModule,
@@ -62,6 +63,7 @@ const MATERIAL_MODULES: any[] = [
     UserProfileComponent,
     AddUserComponent,
     ProductListComponent,
+    ProductProfileComponent,
   ],
   imports: [
     BrowserModule,
