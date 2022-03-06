@@ -107,12 +107,10 @@ public class ProductController {
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>(); // start with a blank document
     if (ctx.queryParamMap().containsKey(PRD_NAME_KEY)) {
-      filters.add(regex(PRD_NAME_KEY, Pattern.quote(ctx.queryParam(PRD_NAME_KEY)), "i"));
-      System.err.println(1);
+      filters.add(regex(PRD_NAME_KEY, Pattern.quote(ctx.queryParam(PRD_NAME_KEY)), "?i"));
     }
     if (ctx.queryParamMap().containsKey(STORE_KEY)) {
       filters.add(eq(STORE_KEY, ctx.queryParam(STORE_KEY)));
-      System.err.println(2);
     }
     if (ctx.queryParamMap().containsKey(THRESHOLD_KEY)) {
       int targetThreshold = ctx.queryParamAsClass(THRESHOLD_KEY, Integer.class).get();
@@ -160,6 +158,17 @@ public class ProductController {
             "Product must have a non-empty product name")
         .check(usr -> usr.threshold >= 0, "Product's threshold must be greater than or equal to zero")
         .check(usr -> usr.store.matches("^(willies|coop)$"), "Product must have a legal store")
+        .check(usr -> usr.description == null || usr.description.length() > 0,
+            "validating for error?")
+        .check(usr -> usr.brand == null || usr.brand.length() > 0,
+            "validating for error?")
+        .check(usr -> usr.category == null || usr.category.length() > 0,
+            "validating for error?")
+        .check(usr -> usr.notes == null || usr.notes.length() > 0,
+            "validating for error?")
+        .check(usr -> usr.lifespan >= 0, "Product's threshold must be greater than or equal to zero")
+        .check(usr -> usr.location == null || usr.location.length() > 0,
+            "validating for error?")
         .get();
 
     productCollection.insertOne(newProduct);

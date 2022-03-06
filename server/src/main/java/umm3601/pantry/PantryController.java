@@ -102,7 +102,7 @@ public class PantryController {
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>(); // start with a blank document
     if (ctx.queryParamMap().containsKey(NAME_KEY)) {
-      filters.add(regex(NAME_KEY, Pattern.quote(ctx.queryParam(NAME_KEY)), "i"));
+      filters.add(regex(NAME_KEY, Pattern.quote(ctx.queryParam(NAME_KEY)), "?i"));
     }
     if (ctx.queryParamMap().containsKey(PROD_KEY)) {
       filters.add(eq(PROD_KEY, ctx.queryParam(PROD_KEY)));
