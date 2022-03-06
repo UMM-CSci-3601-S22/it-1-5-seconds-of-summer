@@ -31,7 +31,7 @@ import io.javalin.http.NotFoundResponse;
 public class ProductController {
 
   private static final String THRESHOLD_KEY = "threshold";
-  private static final String PRD_NAME_KEY = "product_name";
+  private static final String PRD_NAME_KEY = "productName";
   private static final String STORE_KEY = "store";
   private static final String DESC_KEY = "description";
   private static final String BRAND_KEY = "brand";
@@ -101,6 +101,7 @@ public class ProductController {
         .into(new ArrayList<>());
 
     // Set the JSON body of the response toshow collections
+    ctx.json(matchingProducts);
   }
 
   private Bson constructFilter(Context ctx) {
@@ -155,7 +156,7 @@ public class ProductController {
      * - A non-blank company is provided
      */
     Product newProduct = ctx.bodyValidator(Product.class)
-        .check(usr -> usr.product_name != null && usr.product_name.length() > 0,
+        .check(usr -> usr.productName != null && usr.productName.length() > 0,
             "Product must have a non-empty product name")
         .check(usr -> usr.threshold >= 0, "Product's threshold must be greater than or equal to zero")
         .check(usr -> usr.store.matches("^(willies|coop)$"), "Product must have a legal store")

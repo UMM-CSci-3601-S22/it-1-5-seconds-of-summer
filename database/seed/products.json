@@ -3,7 +3,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003e9"
     },
-    "product_name": "Eggplant - Baby",
+    "productName": "Eggplant - Baby",
     "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     "brand": "Connelly and Sons",
     "category": "canned good",
@@ -17,7 +17,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ea"
     },
-    "product_name": "Dill - Primerba, Paste",
+    "productName": "Dill - Primerba, Paste",
     "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
     "brand": "Willms, Bashirian and McLaughlin",
     "category": "bakery",
@@ -31,7 +31,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003eb"
     },
-    "product_name": "Sugar - Splenda Sweetener",
+    "productName": "Sugar - Splenda Sweetener",
     "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     "brand": "Schroeder-Wilkinson",
     "category": "bakery",
@@ -45,7 +45,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ec"
     },
-    "product_name": "Chicken - Whole",
+    "productName": "Chicken - Whole",
     "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
     "brand": "Grant-Ferry",
     "category": "canned good",
@@ -59,7 +59,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ed"
     },
-    "product_name": "Chicken Giblets",
+    "productName": "Chicken Giblets",
     "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
     "brand": "Thompson-Strosin",
     "category": "dry goods",
@@ -73,7 +73,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ee"
     },
-    "product_name": "Pepper - Jalapeno",
+    "productName": "Pepper - Jalapeno",
     "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
     "brand": "Mante, Yundt and Wiegand",
     "category": "produce",
@@ -87,7 +87,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ef"
     },
-    "product_name": "Tomato - Plum With Basil",
+    "productName": "Tomato - Plum With Basil",
     "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
     "brand": "Funk-Hayes",
     "category": "cereals",
@@ -101,7 +101,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f0"
     },
-    "product_name": "Macaroons - Homestyle Two Bit",
+    "productName": "Macaroons - Homestyle Two Bit",
     "description": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
     "brand": "Pouros LLC",
     "category": "seafood",
@@ -115,7 +115,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f1"
     },
-    "product_name": "Chocolate Bar - Smarties",
+    "productName": "Chocolate Bar - Smarties",
     "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
     "brand": "McCullough, Nienow and Nitzsche",
     "category": "cereals",
@@ -129,7 +129,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f2"
     },
-    "product_name": "Corn Syrup",
+    "productName": "Corn Syrup",
     "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
     "brand": "Witting and Sons",
     "category": "dry goods",
@@ -143,7 +143,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f3"
     },
-    "product_name": "Peas Snow",
+    "productName": "Peas Snow",
     "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
     "brand": "Lind-Little",
     "category": "deli",
@@ -157,7 +157,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f4"
     },
-    "product_name": "Kiwi Gold Zespri",
+    "productName": "Kiwi Gold Zespri",
     "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
     "brand": "Nolan-Schumm",
     "category": "canned good",
@@ -171,7 +171,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f5"
     },
-    "product_name": "Veal - Insides, Grains",
+    "productName": "Veal - Insides, Grains",
     "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
     "brand": "Greenholt-Gislason",
     "category": "desserts",
@@ -185,7 +185,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f6"
     },
-    "product_name": "Sesame Seed Black",
+    "productName": "Sesame Seed Black",
     "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
     "brand": "Hahn Group",
     "category": "seafood",
@@ -199,7 +199,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f7"
     },
-    "product_name": "Pepper Squash",
+    "productName": "Pepper Squash",
     "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
     "brand": "Boyer-Wolf",
     "category": "seafood",
@@ -213,7 +213,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f8"
     },
-    "product_name": "Kale - Red",
+    "productName": "Kale - Red",
     "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
     "brand": "Purdy Inc",
     "category": "canned good",
@@ -227,7 +227,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003f9"
     },
-    "product_name": "Taro Leaves",
+    "productName": "Taro Leaves",
     "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
     "brand": "MacGyver-Jones",
     "category": "deli",
@@ -241,7 +241,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003fa"
     },
-    "product_name": "Steamers White",
+    "productName": "Steamers White",
     "description": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
     "brand": "Beahan Group",
     "category": "produce",
@@ -255,7 +255,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003fb"
     },
-    "product_name": "Toothpick Frilled",
+    "productName": "Toothpick Frilled",
     "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
     "brand": "Rau-Fay",
     "category": "cereals",
@@ -269,7 +269,7 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003fc"
     },
-    "product_name": "Sorrel - Fresh",
+    "productName": "Sorrel - Fresh",
     "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
     "brand": "Pfeffer Inc",
     "category": "produce",
