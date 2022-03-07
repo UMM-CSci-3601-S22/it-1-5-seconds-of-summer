@@ -1,22 +1,46 @@
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
+export interface Tag {
+  keyword: string;
+}
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false}
+    }
+  ]
 })
+
+
 export class AddProductComponent implements OnInit {
 
+  isLinear = false;
+  productBasicInfo: FormGroup;
+  productStoreInfo: FormGroup;
+  productStorageInfo: FormGroup;
+  productExtraInfo: FormGroup;
   addProductForm: FormGroup;
 
   product: Product;
 
-    // not sure if this name is magical and making it be found or if I'm missing something,
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags: Tag[] = [];
+
+  // not sure if this name is magical and making it be found or if I'm missing something,
   // but this is where the red text that shows up (when there is invalid input) comes from
   addProductValidationMessages = {
     name: [
@@ -171,6 +195,18 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productBasicInfo = this.fb.group({
+      firstCtrl:['', Validators.required],
+    });
+    this.productStoreInfo = this.fb.group({
+      secondCtrl:['', Validators.required],
+    });
+    this.productStorageInfo = this.fb.group({
+      thirdCtrl:['', Validators.required],
+    });
+    this.productExtraInfo = this.fb.group({
+      fourthCtrl:['', Validators.required],
+    });
     this.createForms();
   }
 
@@ -186,6 +222,26 @@ export class AddProductComponent implements OnInit {
         duration: 5000,
       });
     });
+  }
+
+  addTags(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add tags
+    if (value) {
+      this.tags.push({keyword: value});
+    }
+
+    // Clear the input value
+    event.chipInput?.clear();
+  }
+
+  removeTags(tags: Tag): void {
+    const index = this.tags.indexOf(tags);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
   }
 
 }

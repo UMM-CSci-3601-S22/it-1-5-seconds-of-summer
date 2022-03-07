@@ -1,68 +1,138 @@
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
 
-    <mat-card class="search-card">
-      <mat-card-title class="product-list-title">Product</mat-card-title>
-      <mat-card-content fxLayout="column" >
-
-        <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering in Angular -->
-
-          <mat-form-field class="input-field">
-            <mat-label>Name</mat-label>
-            <input matInput data-test="productNameInput" placeholder="Filter by name"
-            [(ngModel)]="productName" (input)="updateFilter()">
-            <mat-hint>Filtered on client</mat-hint>
-          </mat-form-field>
-
-          <mat-form-field class="input-field">
-            <mat-label>Brand</mat-label>
-            <input matInput data-test="productBrandInput" placeholder="Filter by brand"
-            [(ngModel)]="productBrand" (input)="updateFilter()">
-            <mat-hint>Filtered on client</mat-hint>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering on the server -->
-
-          <mat-form-field class="input-field">
-            <mat-label>Lifespan</mat-label>
-            <input matInput data-test="productLifespanInput" type="number" placeholder="Filter by lifespan"
-            min="0" max="200" [(ngModel)]="productLifespan" (input)="getProductsFromServer()">
-            <mat-hint>Filtered on server</mat-hint>
-          </mat-form-field>
-
-          <mat-form-field class="input-field">
-            <mat-label>Category</mat-label>
-            <mat-select (selectionChange)="getProductsFromServer()" [(ngModel)]="productCategory" data-test="productCategorySelect">
-              <mat-option>--</mat-option>
-              <mat-option value="dry goods">Dry goods</mat-option>
-              <mat-option value="bakery">Bakery</mat-option>
-              <mat-option value="produce">Produce</mat-option>
-              <mat-option value="deli">Deli</mat-option>
-              <mat-option value="canned good">Canned good</mat-option>
-              <mat-option value="cereals">Cereals</mat-option>
-              <mat-option value="seafood">Seafood</mat-option>
-              <mat-option value="desserts">Desserts</mat-option>
-            </mat-select>
-            <mat-hint>Filtered on server</mat-hint>
-          </mat-form-field>
-        </div>
-
-        <br>
-        <div fxLayout="row wrap" fxLayoutGap="10px">
-          <label>View type: </label>
-          <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
-            <mat-radio-button value="card">Card</mat-radio-button>
-            <mat-radio-button value="list">List</mat-radio-button>
-          </mat-radio-group>
-        </div>
-
-      </mat-card-content>
+    <mat-card class="title-card">
+      <mat-card-title class="product-list-title">Product Management</mat-card-title>
+      <mat-card-subtitle class="product-list-description">Welcome to the product management page!<br>You can manage the items that can be added to your shopping list here.</mat-card-subtitle>
     </mat-card>
+
   </div>
 </div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      class="filter-card">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{panelOpenState ? 'Collapse Filters':'Expand Filters'}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card-content fxLayout="column" >
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <!-- Examples of filtering in XXX (update after decide) -->
+            <!-- Current the code below are filter on Client -->
+
+            <mat-form-field class="input-field">
+              <mat-label>Name</mat-label>
+              <input matInput data-test="productNameInput" placeholder="Filter by name"
+              [(ngModel)]="productName" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Description</mat-label>
+              <input matInput data-test="productDescriptionInput" placeholder="Filter by description"
+              [(ngModel)]="productDescription" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Brand</mat-label>
+              <input matInput data-test="productBrandInput" placeholder="Filter by brand"
+              [(ngModel)]="productBrand" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Location</mat-label>
+              <input matInput data-test="productLocationInput" placeholder="Filter by location"
+              [(ngModel)]="productLocation" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Notes</mat-label>
+              <input matInput data-test="productNotesInput" placeholder="Filter by notes"
+              [(ngModel)]="productLocation" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+          </div>
+
+
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <!-- Examples of filtering in XXX (update after decide) -->
+            <!-- Current the code below are filter on Server -->
+
+            <mat-form-field class="input-field">
+              <mat-label>Lifespan</mat-label>
+              <input matInput data-test="productLifespanInput" type="number" placeholder="Filter by lifespan (0-200)"
+              min="0" max="200" [(ngModel)]="productLifespan" (input)="getProductsFromServer()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Threshold</mat-label>
+              <input matInput data-test="productThresholdInput" type="number" placeholder="Filter by threshold (0-999)"
+              min="0" max="999" [(ngModel)]="productThreshold" (input)="getProductsFromServer()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Category</mat-label>
+              <mat-select (selectionChange)="getProductsFromServer()" [(ngModel)]="productCategory" data-test="productCategorySelect">
+                <mat-option>--</mat-option>
+                <mat-option value="dry goods">Dry goods</mat-option>
+                <mat-option value="bakery">Bakery</mat-option>
+                <mat-option value="produce">Produce</mat-option>
+                <mat-option value="deli">Deli</mat-option>
+                <mat-option value="canned good">Canned good</mat-option>
+                <mat-option value="cereals">Cereals</mat-option>
+                <mat-option value="seafood">Seafood</mat-option>
+                <mat-option value="desserts">Desserts</mat-option>
+              </mat-select>
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Store</mat-label>
+              <mat-select (selectionChange)="getProductsFromServer()" [(ngModel)]="productStore" data-test="productStoreSelect">
+                <mat-option>--</mat-option>
+                <mat-option value="willey\'s">willey's</mat-option>
+                <mat-option value="pomme de terre food coop">Pomme de Terre Food Coop</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+
+            <mat-form-field class="input-field">
+              <mat-label>Tags</mat-label>
+              <input matInput id="product-tags-input" placeholder="Filter by Tags"
+              [(ngModel)]="productTags" (input)="getProductsFromServer()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <br>
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <label>View type: </label>
+            <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
+              <mat-radio-button value="card">Card</mat-radio-button>
+              <mat-radio-button value="list">List</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
 
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredProducts; else productsError" >
@@ -90,7 +160,6 @@
           </mat-nav-list>
         </mat-card-content>
       </mat-card>
-
     </div>
   </div>
 
@@ -109,6 +178,6 @@
 
 </div>
 
-<button mat-fab class="add-product-fab" matTooltip="Add Product" matTooltipPosition="left" routerLink="/product/new" data-test="addProductButton">
+<button mat-fab class="add-product-fab" matTooltip="Add Product" matTooltipPosition="right" routerLink="/products/new" data-test="addProductButton">
     <mat-icon class="md-24" aria-label="Add Product">add</mat-icon>
 </button>

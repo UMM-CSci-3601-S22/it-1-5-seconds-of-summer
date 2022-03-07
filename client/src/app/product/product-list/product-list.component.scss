@@ -1,0 +1,26 @@
+.product-cards-container {
+  width: 100%;
+  position: relative;
+}
+
+.product-card {
+  margin-bottom: 10px;
+}
+
+.title-card {
+  margin-bottom: 10px;
+}
+
+.filter-card {
+  margin-bottom: 10px;
+}
+
+.mat-radio-button {
+  margin: 0 12px;
+}
+
+.add-product-fab {
+  position: fixed;
+  bottom: 15px;
+  right: 30px;
+}

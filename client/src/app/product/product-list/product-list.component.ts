@@ -27,6 +27,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getProductSub: Subscription;
   public viewType: 'card' | 'list' = 'card';
 
+  panelOpenState = false;
+
   constructor(private productService: ProductService) {
 
   }
