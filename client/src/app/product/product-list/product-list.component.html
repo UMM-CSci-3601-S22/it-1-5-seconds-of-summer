@@ -1,1 +1,114 @@
-<p>product-list works!</p>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-card class="search-card">
+      <mat-card-title class="product-list-title">Product</mat-card-title>
+      <mat-card-content fxLayout="column" >
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering in Angular -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Name</mat-label>
+            <input matInput data-test="productNameInput" placeholder="Filter by name"
+            [(ngModel)]="productName" (input)="updateFilter()">
+            <mat-hint>Filtered on client</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Brand</mat-label>
+            <input matInput data-test="productBrandInput" placeholder="Filter by brand"
+            [(ngModel)]="productBrand" (input)="updateFilter()">
+            <mat-hint>Filtered on client</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering on the server -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Lifespan</mat-label>
+            <input matInput data-test="productLifespanInput" type="number" placeholder="Filter by lifespan"
+            min="0" max="200" [(ngModel)]="productLifespan" (input)="getProductsFromServer()">
+            <mat-hint>Filtered on server</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Category</mat-label>
+            <mat-select (selectionChange)="getProductsFromServer()" [(ngModel)]="productCategory" data-test="productCategorySelect">
+              <mat-option>--</mat-option>
+              <mat-option value="dry goods">Dry goods</mat-option>
+              <mat-option value="bakery">Bakery</mat-option>
+              <mat-option value="produce">Produce</mat-option>
+              <mat-option value="deli">Deli</mat-option>
+              <mat-option value="canned good">Canned good</mat-option>
+              <mat-option value="cereals">Cereals</mat-option>
+              <mat-option value="seafood">Seafood</mat-option>
+              <mat-option value="desserts">Desserts</mat-option>
+            </mat-select>
+            <mat-hint>Filtered on server</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <br>
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <label>View type: </label>
+          <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
+            <mat-radio-button value="card">Card</mat-radio-button>
+            <mat-radio-button value="list">List</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredProducts; else productsError" >
+    <!-- Switch between card and list view based on the viewType variable, set above in the mar-radio-group -->
+    <div [ngSwitch]="viewType">
+
+      <!-- Card grid view -->
+      <div *ngSwitchCase="'card'" fxLayout="row wrap" fxLayoutGap="10px" class="product-cards-container">
+        <app-product-card [simple]="true" *ngFor="let product of filteredProducts" class="product-card" [product]="product" fxFlex="1 1 280px"></app-product-card>
+      </div>
+
+      <!-- List view -->
+      <mat-card *ngSwitchCase="'list'">
+        <mat-card-content>
+          <mat-nav-list class="product-nav-list">
+            <h3 mat-subheader>Products</h3>
+            <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/products', product._id]" class="product-list-item">
+              <img matListImage [src]="product.image" *ngIf="this.product.image">
+              <h3 matLine class="product-list-name"> {{product.name}} </h3>
+              <p matLine class="product-list-category"> {{product.category}} </p>
+              <p matLine class="product-list-brand"> {{product.brand}} </p>
+              <p matLine class="product-list-tags"> {{product.tags}} </p>
+              <p matLine class="product-list-notes"> {{product.notes}} </p>
+            </a>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+
+  <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+  <ng-template #productError>
+    <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="product-error">
+      <mat-error>
+        There was a problem loading the product. Possibly the server is down or perhaps there are network
+        issues.
+      </mat-error>
+      <mat-error>
+        Please wait a bit and try again or start the server.
+      </mat-error>
+    </div>
+  </ng-template>
+
+</div>
+
+<button mat-fab class="add-product-fab" matTooltip="Add Product" matTooltipPosition="left" routerLink="/product/new" data-test="addProductButton">
+    <mat-icon class="md-24" aria-label="Add Product">add</mat-icon>
+</button>
