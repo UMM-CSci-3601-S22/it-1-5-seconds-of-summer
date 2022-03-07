@@ -93,6 +93,23 @@ public class Server {
 
     server.post("/api/pantry", pantryController::addNewPantry);
 
+    server.post("/api/template", TemplateController::addNewTemplate);
+
+    server.get("/api/template", TemplateController::getTemplates);
+
+    server.get("/api/template/{id}", TemplateController::getTemplate);
+
+    server.delete("/api/template", TemplateController::deleteTemplate);
+
+    server.post("/api/shoppingList", ShoppingListController::addNewShoppingList);
+
+    server.get("/api/shoppingList", ShoppingListController::getShoppingLists);
+
+    server.get("/api/shoppingList/{id}", ShoppingListController::getShoppingList);
+
+    server.delete("/api/shoppingList", ShoppingListController::deleteShoppingList);
+
+
     // This catches any uncaught exceptions thrown in the server
     // code and turns them into a 500 response ("Internal Server
     // Error Response"). In general you'll like to *never* actually
