@@ -3,160 +3,160 @@
     "_id": {
       "$oid": "62267bc7fc13ae2230001266"
     },
-    "productName": "Devy",
-    "prodId": "60858-314",
+    "name": "Devy",
+    "prodID": "60858-314",
     "quantity": 89
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001267"
     },
-    "productName": "Renell",
-    "prodId": "65517-0014",
+    "name": "Renell",
+    "prodID": "65517-0014",
     "quantity": 5
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001268"
     },
-    "productName": "Yvor",
-    "prodId": "76273-001",
+    "name": "Yvor",
+    "prodID": "76273-001",
     "quantity": 79
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001269"
     },
-    "productName": "Sean",
-    "prodId": "0904-6158",
+    "name": "Sean",
+    "prodID": "0904-6158",
     "quantity": 52
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126a"
     },
-    "productName": "Sosanna",
-    "prodId": "0904-5590",
+    "name": "Sosanna",
+    "prodID": "0904-5590",
     "quantity": 54
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126b"
     },
-    "productName": "Indira",
-    "prodId": "34362-0270",
+    "name": "Indira",
+    "prodID": "34362-0270",
     "quantity": 50
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126c"
     },
-    "productName": "Marna",
-    "prodId": "53808-0245",
+    "name": "Marna",
+    "prodID": "53808-0245",
     "quantity": 57
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126d"
     },
-    "productName": "Robby",
-    "prodId": "68788-9100",
+    "name": "Robby",
+    "prodID": "68788-9100",
     "quantity": 31
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126e"
     },
-    "productName": "Annadiane",
-    "prodId": "44567-212",
+    "name": "Annadiane",
+    "prodID": "44567-212",
     "quantity": 74
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae223000126f"
     },
-    "productName": "June",
-    "prodId": "33261-665",
+    "name": "June",
+    "prodID": "33261-665",
     "quantity": 58
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001270"
     },
-    "productName": "Jeramey",
-    "prodId": "57955-5009",
+    "name": "Jeramey",
+    "prodID": "57955-5009",
     "quantity": 8
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001271"
     },
-    "productName": "Patrick",
-    "prodId": "11084-066",
+    "name": "Patrick",
+    "prodID": "11084-066",
     "quantity": 13
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001272"
     },
-    "productName": "Clarence",
-    "prodId": "40028-511",
+    "name": "Clarence",
+    "prodID": "40028-511",
     "quantity": 3
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001273"
     },
-    "productName": "Ken",
-    "prodId": "64778-0399",
+    "name": "Ken",
+    "prodID": "64778-0399",
     "quantity": 54
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001274"
     },
-    "productName": "Vernice",
-    "prodId": "54868-5922",
+    "name": "Vernice",
+    "prodID": "54868-5922",
     "quantity": 27
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001275"
     },
-    "productName": "Torry",
-    "prodId": "49349-651",
+    "name": "Torry",
+    "prodID": "49349-651",
     "quantity": 100
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001276"
     },
-    "productName": "Arlie",
-    "prodId": "16590-488",
+    "name": "Arlie",
+    "prodID": "16590-488",
     "quantity": 46
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001277"
     },
-    "productName": "Sarine",
-    "prodId": "53329-207",
+    "name": "Sarine",
+    "prodID": "53329-207",
     "quantity": 65
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001278"
     },
-    "productName": "Angel",
-    "prodId": "10733-130",
+    "name": "Angel",
+    "prodID": "10733-130",
     "quantity": 5
   },
   {
     "_id": {
       "$oid": "62267bc7fc13ae2230001279"
     },
-    "productName": "Modesta",
-    "prodId": "64578-0106",
+    "name": "Modesta",
+    "prodID": "64578-0106",
     "quantity": 71
   }
 ]
