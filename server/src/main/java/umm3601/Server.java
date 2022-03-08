@@ -12,10 +12,13 @@ import org.bson.UuidRepresentation;
 
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
-import io.javalin.http.InternalServerErrorResponse;
+
+//import io.javalin.http.InternalServerErrorResponse;
 import umm3601.user.UserController;
 import umm3601.pantry.PantryController;
 import umm3601.product.ProductController;
+import umm3601.shoppingList.ShoppingListController;
+import umm3601.template.TemplateController;
 
 public class Server {
 
@@ -47,6 +50,8 @@ public class Server {
     UserController userController = new UserController(database);
     ProductController productController = new ProductController(database);
     PantryController pantryController = new PantryController(database);
+    ShoppingListController shoppingListController = new ShoppingListController(database);
+    TemplateController templateController = new TemplateController(database);
 
     Javalin server = Javalin.create(config -> config.registerPlugin(new RouteOverviewPlugin("/api")));
     /*
@@ -93,6 +98,23 @@ public class Server {
 
     server.post("/api/pantry", pantryController::addNewPantry);
 
+    server.post("/api/template", templateController::addNewTemplate);
+
+    server.get("/api/template", templateController::getTemplates);
+
+    server.get("/api/template/{id}", templateController::getTemplate);
+
+    server.delete("/api/template", templateController::deleteTemplate);
+
+    server.post("/api/shoppingList", shoppingListController::addNewShoppingList);
+
+    server.get("/api/shoppingList", shoppingListController::getShoppingLists);
+
+    server.get("/api/shoppingList/{id}", shoppingListController::getShoppingList);
+
+    server.delete("/api/shoppingList", shoppingListController::deleteShoppingList);
+
+
     // This catches any uncaught exceptions thrown in the server
     // code and turns them into a 500 response ("Internal Server
     // Error Response"). In general you'll like to *never* actually
@@ -102,8 +124,8 @@ public class Server {
     // certainly want to use a logging library to log all errors
     // caught here so you'd know about them and could try to address
     // them.
-    server.exception(Exception.class, (e, ctx) -> {
-      throw new InternalServerErrorResponse(e.toString());
-    });
+    // server.exception(Exception.class, (e, ctx) -> {
+    //   throw new InternalServerErrorResponse(e.toString());
+    // });
   }
 }
