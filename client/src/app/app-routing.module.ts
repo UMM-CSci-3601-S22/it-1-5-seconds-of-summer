@@ -7,6 +7,8 @@ import { AddUserComponent } from './users/add-user.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ProductProfileComponent } from './product/product-profile/product-profile.component';
+import { PantryListComponent } from './pantry/pantry-list/pantry-list.component';
+import { PantryProfileComponent } from './pantry/pantry-profile/pantry-profile.component';
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -17,12 +19,12 @@ const routes: Routes = [
   {path: 'users/new', component: AddUserComponent},
   {path: 'users/:id', component: UserProfileComponent},
   // {path: 'shoppingLists', component: ShoppingListListComponent},
-  // {path: 'pantrys', component: PantryListComponent},
-  // {path: 'pantrys/new', component: AddPantryComponent},
-  // {path: 'pantrys/:id', component: PantryProfileComponent},
-  {path: 'products', component: ProductListComponent},
-  {path: 'products/new', component: AddProductComponent},
-  {path: 'products/:id', component: ProductProfileComponent},
+  {path: 'pantry', component: PantryListComponent},
+  //{path: 'pantrys/new', component: AddPantryComponent},
+  {path: 'pantry/:id', component: PantryProfileComponent},
+  {path: 'product', component: ProductListComponent},
+  {path: 'product/new', component: AddProductComponent},
+  {path: 'product/:id', component: ProductProfileComponent},
 ];
 
 @NgModule({
