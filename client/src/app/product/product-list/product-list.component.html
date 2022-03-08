@@ -58,7 +58,7 @@
             <mat-form-field class="input-field">
               <mat-label>Notes</mat-label>
               <input matInput data-test="productNotesInput" placeholder="Filter by notes"
-              [(ngModel)]="productLocation" (input)="updateFilter()">
+              [(ngModel)]="productNotes" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
           </div>
@@ -149,7 +149,7 @@
         <mat-card-content>
           <mat-nav-list class="product-nav-list">
             <h3 mat-subheader>Products</h3>
-            <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/products', product._id]" class="product-list-item">
+            <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/product', product._id]" class="product-list-item">
               <img matListImage [src]="product.image" *ngIf="this.product.image">
               <h3 matLine class="product-list-name"> {{product.name}} </h3>
               <p matLine class="product-list-category"> {{product.category}} </p>

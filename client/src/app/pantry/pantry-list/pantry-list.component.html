@@ -1,1 +1,111 @@
-<p>pantry-list works!</p>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-card class="title-card">
+      <mat-card-title class="pantry-list-title">Pantry Management</mat-card-title>
+      <mat-card-subtitle class="pantry-list-description">Welcome to the pantry search page!<br>You can search all pantrys here.</mat-card-subtitle>
+    </mat-card>
+
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      class="filter-card">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{panelOpenState ? 'Collapse Filters':'Expand Filters'}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card-content fxLayout="column" >
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <!-- Examples of filtering in XXX (update after decide) -->
+            <!-- Current the code below are filter on Client -->
+
+            <mat-form-field class="input-field">
+              <mat-label>Product</mat-label>
+              <input matInput data-test="pantryProductInput" placeholder="Filter by product"
+              [(ngModel)]="pantryProduct" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>PurchaseDate</mat-label>
+              <input matInput data-test="pantryPurchaseDateInput" placeholder="Filter by purchaseDate"
+              [(ngModel)]="pantryPurchaseDate" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="input-field">
+              <mat-label>Notes</mat-label>
+              <input matInput data-test="pantryNotesInput" placeholder="Filter by notes"
+              [(ngModel)]="pantryNotes" (input)="updateFilter()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+          </div>
+
+
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <!-- Examples of filtering in XXX (update after decide) -->
+            <!-- Current the code below are filter on Server -->
+
+            <mat-form-field class="input-field">
+              <mat-label>Tags</mat-label>
+              <input matInput id="pantry-Tags-input" placeholder="Filter by Tags"
+              [(ngModel)]="pantryTags" (input)="getPantrysFromServer()">
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <br>
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <label>View type: </label>
+            <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
+              <mat-radio-button value="card">Card</mat-radio-button>
+              <mat-radio-button value="list">List</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredPantrys; else pantrysError" >
+    <!-- List view -->
+      <mat-card-content>
+        <mat-nav-list class="pantry-nav-list">
+          <h3 mat-subheader>Pantrys</h3>
+          <a mat-list-item *ngFor="let pantry of this.filteredPantrys" [routerLink]="['/pantry', pantry._id]" class="pantry-list-item">
+            <h3 matLine class="pantry-list-product"> {{pantry.product}} </h3>
+            <p matLine class="pantry-list-purchaseDate"> {{pantry.purchaseDate}} </p>
+            <p matLine class="pantry-list-notes"> {{pantry.notes}} </p>
+            <p matLine class="pantry-list-tags"> {{pantry.tags}} </p>
+          </a>
+        </mat-nav-list>
+      </mat-card-content>
+  </div>
+
+  <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+  <ng-template #pantrysError>
+    <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="pantry-error">
+      <mat-error>
+        There was a problem loading the pantry. Possibly the server is down or perhaps there are network
+        issues.
+      </mat-error>
+      <mat-error>
+        Please wait a bit and try again or start the server.
+      </mat-error>
+    </div>
+  </ng-template>
+
+</div>
+
