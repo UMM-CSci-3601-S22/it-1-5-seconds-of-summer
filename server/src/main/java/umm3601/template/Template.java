@@ -19,7 +19,7 @@ import org.mongojack.ObjectId;
 // check in CheckStyle so that we don't get a failed
 // build when Gradle runs CheckStyle.
 @SuppressWarnings({"VisibilityModifier"})
-public class Pantry {
+public class Template {
 
   @ObjectId @Id
   // By default Java field names shouldn't start with underscores.

@@ -16,6 +16,8 @@ import io.javalin.http.InternalServerErrorResponse;
 import umm3601.user.UserController;
 import umm3601.pantry.PantryController;
 import umm3601.product.ProductController;
+import umm3601.shoppingList.ShoppingListController;
+import umm3601.template.TemplateController;
 
 public class Server {
 
@@ -47,6 +49,8 @@ public class Server {
     UserController userController = new UserController(database);
     ProductController productController = new ProductController(database);
     PantryController pantryController = new PantryController(database);
+    ShoppingListController shoppingListController = new ShoppingListController(database);
+    TemplateController templateController = new TemplateController(database);
 
     Javalin server = Javalin.create(config -> config.registerPlugin(new RouteOverviewPlugin("/api")));
     /*
@@ -93,21 +97,21 @@ public class Server {
 
     server.post("/api/pantry", pantryController::addNewPantry);
 
-    server.post("/api/template", TemplateController::addNewTemplate);
+    server.post("/api/template", templateController::addNewTemplate);
 
-    server.get("/api/template", TemplateController::getTemplates);
+    server.get("/api/template", templateController::getTemplates);
 
-    server.get("/api/template/{id}", TemplateController::getTemplate);
+    server.get("/api/template/{id}", templateController::getTemplate);
 
-    server.delete("/api/template", TemplateController::deleteTemplate);
+    server.delete("/api/template", templateController::deleteTemplate);
 
-    server.post("/api/shoppingList", ShoppingListController::addNewShoppingList);
+    server.post("/api/shoppingList", shoppingListController::addNewShoppingList);
 
-    server.get("/api/shoppingList", ShoppingListController::getShoppingLists);
+    server.get("/api/shoppingList", shoppingListController::getShoppingLists);
 
-    server.get("/api/shoppingList/{id}", ShoppingListController::getShoppingList);
+    server.get("/api/shoppingList/{id}", shoppingListController::getShoppingList);
 
-    server.delete("/api/shoppingList", ShoppingListController::deleteShoppingList);
+    server.delete("/api/shoppingList", shoppingListController::deleteShoppingList);
 
 
     // This catches any uncaught exceptions thrown in the server

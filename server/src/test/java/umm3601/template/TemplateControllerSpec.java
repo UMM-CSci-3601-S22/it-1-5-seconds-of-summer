@@ -43,6 +43,7 @@ import io.javalin.http.HttpCode;
 import io.javalin.http.NotFoundResponse;
 import io.javalin.http.util.ContextUtil;
 import io.javalin.plugin.json.JavalinJackson;
+import umm3601.pantry.PantryController;
 
 /**
  * Tests the logic of the TemplateController
@@ -262,7 +263,7 @@ public class TemplateControllerSpec {
     assertEquals(1, resultTemplate.length);
     for (Template template : resultTemplate) {
       assertEquals("corn FLAKEs", template.name);
-      assertEquals(5, template.notes);
+      assertEquals(5, template.quantity);
     }
   }
 
@@ -416,8 +417,8 @@ public class TemplateControllerSpec {
     Context ctx = mockContext("api/products");
 
     assertThrows(ValidationException.class, () -> {
-      productController.addNewProduct(ctx);
-    });
+      templateController.addNewTemplate(ctx);
+    });}
   @Test
   public void deleteTemplate() throws IOException {
     String testID = samsId.toHexString();

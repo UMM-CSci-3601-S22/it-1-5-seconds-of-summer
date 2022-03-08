@@ -1,4 +1,4 @@
-package umm3601.shoppinglist;
+package umm3601.shoppingList;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -147,7 +147,7 @@ public class ShoppingListController {
     ShoppingList newShoppingList = ctx.bodyValidator(ShoppingList.class)
         .check(usr -> usr.productName != null && usr.productName.length() > 0,
             "ShoppingList must have a non-empty shoppingList name")
-        .check(usr -> usr.role.matches("^(willies|coop)$"),
+        .check(usr -> usr.store.matches("^(willies|coop)$"),
          "Item must have a legal store")
         .check(usr -> usr.quantity > 0,
             "ShoppingList Quantity must be greater than zero")
