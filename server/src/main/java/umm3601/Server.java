@@ -12,7 +12,8 @@ import org.bson.UuidRepresentation;
 
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
-import io.javalin.http.InternalServerErrorResponse;
+
+//import io.javalin.http.InternalServerErrorResponse;
 import umm3601.user.UserController;
 import umm3601.pantry.PantryController;
 import umm3601.product.ProductController;
