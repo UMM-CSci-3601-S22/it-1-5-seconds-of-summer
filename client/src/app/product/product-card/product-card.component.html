@@ -15,7 +15,7 @@
     <p>Threshold: <span class="product-card-threshold">{{ this.product.threshold }}</span></p>
     <mat-divider inset></mat-divider>
     <p>Notes: <span class="product-card-notes">{{ this.product.notes }}</span></p>
-    
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-button data-test="viewProfileButton" *ngIf="this.simple" [routerLink]="['/product', this.product._id]">View Profile</button>
