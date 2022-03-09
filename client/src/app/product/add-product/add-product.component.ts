@@ -179,7 +179,7 @@ export class AddProductComponent implements OnInit {
 
   submitForm() {
     this.productService.addProduct(this.addProductCtrl.value).subscribe(newID => {
-      this.snackBar.open('Added Product ' + this.addProductCtrl.value.name, null, {
+      this.snackBar.open('Added Product ' + this.addProductCtrl.value.productBasicInfo.name, null, {
         duration: 2000,
       });
       this.router.navigate(['/products/', newID]);

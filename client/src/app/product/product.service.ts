@@ -19,7 +19,7 @@ export class ProductService {
     category?: ProductCategory;
     store?: ShoppingStore;
     location?: string;
-    notes: string;
+    notes?: string;
     tags?: string;
     lifespan?: number;
     threshold?: number; }): Observable<Product[]> {

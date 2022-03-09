@@ -208,22 +208,36 @@
 
               <div>
                 <button mat-button matStepperPrevious type="button">Previous</button>
-                <button mat-button matStepperNext type="button">To Confirmaion</button>
+                <button mat-button matStepperNext type="button">To Confirmation</button>
               </div>
             </mat-step>
 
+            <!-- Confirmation Step -->
             <mat-step>
-              <ng-template matStepLabel>Information Confirmaion</ng-template>
+              <ng-template matStepLabel>Information Confirmation</ng-template>
               <p>You are almost done!</p>
               <p>Please check the information below:</p>
 
               <mat-list>
-                <mat-list-item> <strong>Name: </strong> {{this.addProductCtrl.value.name}}</mat-list-item>
+                <mat-list-item> <strong>Product Name: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.name}}</mat-list-item>
+                <mat-list-item> <strong>Product Brand: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.brand}}</mat-list-item>
+                <mat-list-item> <strong>Category: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.category}}</mat-list-item>
+                <mat-list-item> <strong>Description: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.description}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> <strong>Store: </strong> &nbsp; {{this.addProductCtrl.value.productStoreInfo.store}}</mat-list-item>
+                <mat-list-item> <strong>Location: </strong> &nbsp; {{this.addProductCtrl.value.productStoreInfo.location}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> <strong>LifeSpan: </strong> &nbsp; {{this.addProductCtrl.value.productStorageInfo.lifespan}} days</mat-list-item>
+                <mat-list-item> <strong>Threshold: </strong> &nbsp; {{this.addProductCtrl.value.productStorageInfo.threshold}} days</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> <strong>Notes: </strong> &nbsp; {{this.addProductCtrl.value.productExtraInfo.notes}}</mat-list-item>
+                <mat-list-item><mat-chip-list> <strong>Tags: </strong> &nbsp;
+                  <span *ngFor="let tag of tags">{{this.addProductCtrl.value.productExtraInfo.tags}}</span>
+                </mat-chip-list></mat-list-item>
               </mat-list>
 
               <div>
                 <button mat-button matStepperPrevious>Go Back</button>
-
               </div>
 
             </mat-step>
