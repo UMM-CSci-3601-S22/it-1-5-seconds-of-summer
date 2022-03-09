@@ -1,0 +1,15 @@
+<mat-card class="pantry-card" *ngIf="this.pantry">
+  <mat-card-header>
+    <mat-card-title class="pantry-card-productId">{{ this.pantry.productId }}</mat-card-title>
+    <mat-card-subtitle class="pantry-card-purchaseDate">{{ this.pantry.purchaseDate }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content *ngIf="!this.simple">
+    <mat-divider inset></mat-divider>
+    <p>Notes: <span class="pantry-card-notes">{{ this.pantry.notes }}</span></p>
+    <p>Tags: <span class="pantry-card-tags">{{ this.pantry.tags }}</span></p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button data-test="viewProfileButton" *ngIf="this.simple" [routerLink]="['/pantry', this.pantry._id]">View Profile</button>
+  </mat-card-actions>
+</mat-card>

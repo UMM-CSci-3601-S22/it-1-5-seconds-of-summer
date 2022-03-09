@@ -49,6 +49,7 @@ import { ShoppinglistCardComponent } from './shoppinglist/shoppinglist-card/shop
 import { ShoppinglistListComponent } from './shoppinglist/shoppinglist-list/shoppinglist-list.component';
 import { ShoppinglistService } from './shoppinglist/shoppinglist.service';
 import { AddPantryComponent } from './pantry/add-pantry/add-pantry.component';
+import { PantryCardComponent } from './pantry/pantry-card/pantry-card.component';
 
 const MATERIAL_MODULES: any[] = [
   MatListModule,
@@ -92,6 +93,7 @@ const MATERIAL_MODULES: any[] = [
     ShoppinglistCardComponent,
     ShoppinglistListComponent,
     AddPantryComponent,
+    PantryCardComponent,
   ],
   imports: [
     BrowserModule,
