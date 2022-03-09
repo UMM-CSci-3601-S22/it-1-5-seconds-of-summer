@@ -131,7 +131,7 @@ export class AddProductComponent implements OnInit {
         ])),
       }),
 
-      productStoreInfo: new FormGroup({
+      productStoreInfo: this.fb.group({
         store: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern('^(willeys|pomme de terre food coop|other)$'),
@@ -144,7 +144,7 @@ export class AddProductComponent implements OnInit {
         ])),
       }),
 
-      productStorageInfo: new FormGroup({
+      productStorageInfo: this.fb.group({
         lifespan: new FormControl('', Validators.compose([
           Validators.required,
           Validators.min(1),
@@ -160,7 +160,7 @@ export class AddProductComponent implements OnInit {
         ])),
       }),
 
-      productExtraInfo: new FormGroup({
+      productExtraInfo: this.fb.group({
         notes: new FormControl('', Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(500)

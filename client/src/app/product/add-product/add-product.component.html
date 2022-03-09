@@ -28,7 +28,7 @@
                 <input matInput
                   placeholder="Product Name"
                   formControlName="name"
-                  required>
+                  required/>
                 <mat-error *ngFor="let validation of addProductValidationMessages.name">
                   <mat-error class="error-message" data-test="nameError"
                             *ngIf="addProductCtrl.get('productBasicInfo').get('name').hasError(validation.type) && (addProductCtrl.get('productBasicInfo').get('name').dirty || addProductCtrl.get('productBasicInfo').get('name').touched)">
