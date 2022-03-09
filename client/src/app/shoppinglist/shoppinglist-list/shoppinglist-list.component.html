@@ -11,6 +11,19 @@
 
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <mat-card class="function-card">
+
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+        <button mat-stroked-button color="primary" value="generateShoppingList">Generate Shopping List</button>
+        <button mat-stroked-button color="primary" value="addProductToPantry">Add Product to Pantry</button>
+      </div>
+
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
 
     <mat-accordion>
       <mat-expansion-panel (opened)="panelOpenState = true"
@@ -70,7 +83,6 @@
     </mat-accordion>
   </div>
 </div>
-
 
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredShoppinglists; else shoppinglistsError" >
