@@ -14,4 +14,4 @@ export interface Product {
 }
 
 export type ProductCategory = 'dry goods' | 'bakery' | 'produce' | 'deli' | 'canned good' | 'cereals' | 'seafood' | 'desserts';
-export type ShoppingStore = 'willey\'s' | 'pomme de terre food coop' | 'other';
+export type ShoppingStore = 'willeys' | 'pomme de terre food coop' | 'other';
