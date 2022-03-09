@@ -29,11 +29,6 @@ export class AddProductComponent implements OnInit {
 
   isLinear = false;
   addProductCtrl: FormGroup;
-  // productBasicInfo: FormGroup;
-  // productStoreInfo: FormGroup;
-  // productStorageInfo: FormGroup;
-  // productExtraInfo: FormGroup;
-  // addProductForm: FormGroup;
 
   product: Product;
 
@@ -54,7 +49,7 @@ export class AddProductComponent implements OnInit {
     description: [
       {type: 'required', message: 'description is required'},
       {type: 'minlength', message: 'description must be at least 2 characters long'},
-      {type: 'maxlength', message: 'description cannot be more than 200 characters long'}
+      {type: 'maxlength', message: 'description cannot be more than 500 characters long'}
     ],
 
     brand: [
@@ -82,7 +77,7 @@ export class AddProductComponent implements OnInit {
     notes: [
       {type: 'required', message: 'notes is required'},
       {type: 'minlength', message: 'notes must be at least 2 characters long'},
-      {type: 'maxlength', message: 'notes cannot be more than 50 characters long'}
+      {type: 'maxlength', message: 'notes cannot be more than 500 characters long'}
     ],
 
     tags: [
@@ -106,92 +101,6 @@ export class AddProductComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar, private router: Router) {
   }
-
-  // createForms_OLD() {
-
-  //   // add product form validations
-  //   this.addProductForm = this.fb.group({
-
-  //     // We allow alphanumeric input and limit the length.
-  //     name: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(50),
-  //       (fc) => {
-  //         if (fc.value.toLowerCase() === 'abc123' || fc.value.toLowerCase() === '123abc') {
-  //           return ({existingName: true});
-  //         } else {
-  //           return null;
-  //         }
-  //       },
-  //     ])),
-
-  //     // We allow alphanumeric input and limit the length.
-  //     description: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(200)
-  //     ])),
-
-  //     // We allow alphanumeric input and limit the length.
-  //     brand: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(50)
-  //     ])),
-
-  //     category: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.pattern('^(dry goods|bakery|produce|deli|canned good|cereals|seafood|desserts)$'),
-  //     ])),
-
-  //     store: new FormControl('willey\'s', Validators.compose([
-  //       Validators.required,
-  //       Validators.pattern('^(willey\'s|Pomme de Terre Food Coop)$'),
-  //     ])),
-
-  //     // We allow alphanumeric input and limit the length.
-  //     location: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(100)
-  //     ])),
-
-  //     // We allow alphanumeric input and limit the length.
-  //     notes: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(50)
-  //     ])),
-
-  //     // We allow alphanumeric input and limit the length.
-  //     tags: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(30)
-  //     ])),
-
-  //     lifespan: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.min(1),
-  //       Validators.max(365),
-  //       // In the HTML, we set type="number" on this field. That guarantees that the value of this field is numeric,
-  //       // but not that it's a whole number. (The product could still type -27.3232, for example.) So, we also need
-  //       // to include this pattern.
-  //       Validators.pattern('^[0-9]+$')
-  //     ])),
-
-  //     threshold: new FormControl('', Validators.compose([
-  //       Validators.required,
-  //       Validators.min(0),
-  //       Validators.max(999),
-  //       // In the HTML, we set type="number" on this field. That guarantees that the value of this field is numeric,
-  //       // but not that it's a whole number. (The product could still type -27.3232, for example.) So, we also need
-  //       // to include this pattern.
-  //       Validators.pattern('^[0-9]+$')
-  //     ])),
-  //   });
-  // }
 
   createProductForms() {
 
@@ -218,7 +127,7 @@ export class AddProductComponent implements OnInit {
         description: new FormControl('', Validators.compose([
           Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(200)
+          Validators.maxLength(500)
         ])),
       }),
 
@@ -254,7 +163,7 @@ export class AddProductComponent implements OnInit {
       productExtraInfo: new FormGroup({
         notes: new FormControl('', Validators.compose([
           Validators.minLength(2),
-          Validators.maxLength(50)
+          Validators.maxLength(500)
         ])),
 
         tags: new FormControl('', Validators.compose([
