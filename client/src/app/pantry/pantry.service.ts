@@ -13,7 +13,7 @@ export class PantryService {
   }
 
   getPantrys(filters?: {
-    product?: string;
+    productId?: string;
     purchaseDate?: string;
     tags: string;
     notes: string; }): Observable<Pantry[]> {
@@ -21,8 +21,8 @@ export class PantryService {
     let httpParams: HttpParams = new HttpParams();
 
     if (filters) {
-      if (filters.product) {
-        httpParams = httpParams.set('product', filters.product);
+      if (filters.productId) {
+        httpParams = httpParams.set('productId', filters.productId);
       }
       if (filters.purchaseDate) {
         httpParams = httpParams.set('purchaseDate', filters.purchaseDate);
@@ -46,18 +46,18 @@ export class PantryService {
 
 
   filterPantrys(pantrys: Pantry[], filters: {
-    product?: string;
+    productId?: string;
     purchaseDate?: string;
     tags: string;
     notes: string; }): Pantry[] {
 
     let filteredPantrys = pantrys;
 
-    // Filter by product
-    if (filters.product) {
-      filters.product = filters.product.toLowerCase();
+    // Filter by productId
+    if (filters.productId) {
+      filters.productId = filters.productId.toLowerCase();
 
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.product.toLowerCase().indexOf(filters.product) !== -1);
+      filteredPantrys = filteredPantrys.filter(pantry => pantry.productId.toLowerCase().indexOf(filters.productId) !== -1);
     }
     // Filter by purchaseDate
     if (filters.purchaseDate) {

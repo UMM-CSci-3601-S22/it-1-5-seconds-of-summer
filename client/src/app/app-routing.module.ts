@@ -11,6 +11,7 @@ import { PantryListComponent } from './pantry/pantry-list/pantry-list.component'
 import { PantryProfileComponent } from './pantry/pantry-profile/pantry-profile.component';
 import { ShoppinglistProfileComponent } from './shoppinglist/shoppinglist-profile/shoppinglist-profile.component';
 import { ShoppinglistListComponent } from './shoppinglist/shoppinglist-list/shoppinglist-list.component';
+import { AddPantryComponent } from './pantry/add-pantry/add-pantry.component';
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'shoppinglist', component: ShoppinglistListComponent},
   {path: 'shoppinglist/:id', component: ShoppinglistProfileComponent},
   {path: 'pantry', component: PantryListComponent},
-  //{path: 'pantrys/new', component: AddPantryComponent},
+  {path: 'pantry/new', component: AddPantryComponent},
   {path: 'pantry/:id', component: PantryProfileComponent},
   {path: 'product', component: ProductListComponent},
   {path: 'product/new', component: AddProductComponent},

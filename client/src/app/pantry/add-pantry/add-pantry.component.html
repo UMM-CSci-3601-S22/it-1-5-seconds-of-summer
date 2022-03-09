@@ -1,1 +1,159 @@
-<p>add-pantry works!</p>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <mat-card class="add-pantry-title-card">
+
+        <mat-card-header>
+          <mat-card-title class="add-pantry-title">Add New Pantry</mat-card-title>
+          <mat-card-subtitle class="add-pantry-subtitle">Welcome! You are in the process of adding a pantry to the pantry. <br>
+            Please fill in the corresponding information according to the instructions in the form below. <br>
+            <b>We recommend you search whether the item is already in the library before adding it to avoid repeatedly adding the pantry.</b></mat-card-subtitle>
+        </mat-card-header>
+
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <form [formGroup]="addPantryCtrl" (ngSubmit)="submitForm();" #addPantryGroup>
+      <mat-card class="add-pantry-form-card">
+        <mat-card-content fxLayout="column">
+          <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+
+            <!-- Group of Required Info, Step 1 -->
+            <mat-step formGroupName="pantryRequiredInfo" [stepControl]="addPantryCtrl.get('pantryRequiredInfo')" errorMessage="Required">
+              <ng-template matStepLabel>Pantry Required Information</ng-template>
+
+              <mat-form-field class="add-pantry-elements" appearance="outline">
+                <mat-label>Product</mat-label>
+                <input matInput
+                  placeholder="Product ID"
+                  formControlName="productId"
+                  required>
+                  <mat-error *ngFor="let validation of addPantryValidationMessages.productId">
+                    <mat-error class="error-message" data-test="productIdError"
+                              *ngIf="addPantryCtrl.get('pantryRequiredInfo').get('productId').hasError(validation.type) && (addPantryCtrl.get('pantryRequiredInfo').get('productId').dirty || addPantryCtrl.get('pantryRequiredInfo').get('productId').touched)">
+                      {{validation.message}}
+                    </mat-error>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="add-pantry-elements" appearance="outline">
+                <mat-label>Purchase Date</mat-label>
+                <input matInput
+                  [matDatepicker]="purchaseDatePicker"
+                  placeHolder="Please Select Date of Purchase"
+                  formControlName="purchaseDate"
+                  required>
+                <mat-datepicker-toggle matSuffix [for]="purchaseDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #purchaseDatePicker disabled="false">
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+
+                <mat-error *ngFor="let validation of addPantryValidationMessages.purchaseDate">
+                  <mat-error class="error-message" data-test="purchaseDateError"
+                            *ngIf="addPantryCtrl.get('pantryRequiredInfo').get('purchaseDate').hasError(validation.type) && (addPantryCtrl.get('pantryRequiredInfo').get('purchaseDate').dirty || addPantryCtrl.get('pantryRequiredInfo').get('purchaseDate').touched)">
+                    {{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperNext type="button">Next</button>
+              </div>
+            </mat-step>
+
+            <!-- Group of Optional Info, Step 2 -->
+            <mat-step formGroupName="pantryOptionalInfo" [stepControl]="addPantryCtrl.get('pantryOptionalInfo')" [optional]="true">
+              <ng-template matStepLabel>Pantry Optional Information</ng-template>
+
+              <mat-form-field class="add-pantry-elements" appearance="outline">
+                <mat-label>Notes</mat-label>
+                <textarea matInput
+                  placeholder="Notes"
+                  formControlName="notes">
+                </textarea>
+                <mat-error *ngFor="let validation of addPantryValidationMessages.notes">
+                  <mat-error class="error-message" data-test="notesError"
+                            *ngIf="addPantryCtrl.get('pantryOptionalInfo').get('notes').hasError(validation.type) && (addPantryCtrl.get('pantryOptionalInfo').get('notes').dirty || addPantryCtrl.get('pantryOptionalInfo').get('notes').touched)">
+                    {{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="add-pantry-elements" appearance="outline">
+                <mat-label>Tags</mat-label>
+                <mat-chip-list #chipList aria-label="tags">
+                  <mat-chip *ngFor="let tag of tags" (removed)="removeTags(tag)">
+                    {{tag.keyword}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Tags"
+                        [matChipInputFor] = "chipList"
+                        [matChipInputSeparatorKeyCodes] = "separatorKeysCodes"
+                        [matChipInputAddOnBlur] = "addOnBlur"
+                        (matChipInputTokenEnd) = "addTags($event)">
+                </mat-chip-list>
+                <mat-error *ngFor="let validation of addPantryValidationMessages.tags">
+                  <mat-error class="error-message" data-test="tagsError"
+                            *ngIf="addPantryCtrl.get('pantryOptionalInfo').get('tags').hasError(validation.type) && (addPantryCtrl.get('pantryOptionalInfo').get('tags').dirty || addPantryCtrl.get('pantryOptionalInfo').get('tags').touched)">
+                    {{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperPrevious type="button">Previous</button>
+                <button mat-button matStepperNext type="button">To Confirmation</button>
+              </div>
+            </mat-step>
+
+            <!-- Confirmation Step -->
+            <mat-step>
+              <ng-template matStepLabel>Information Confirmation</ng-template>
+              <p>You are almost done!</p>
+              <p>Please check the information below:</p>
+
+              <mat-list>
+                <mat-list-item> <strong>Product: </strong> &nbsp; {{this.addPantryCtrl.value.pantryRequiredInfo.productId}}</mat-list-item>
+                <mat-list-item> <strong>Purchase Date: </strong> &nbsp; {{this.addPantryCtrl.value.pantryRequiredInfo.purchaseDate}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item> <strong>Notes: </strong> &nbsp; {{this.addPantryCtrl.value.pantryOptionalInfo.notes}}</mat-list-item>
+                <mat-list-item><mat-chip-list> <strong>Tags: </strong> &nbsp;
+                  <span *ngFor="let tag of tags">{{this.addPantryCtrl.value.pantryOptionalInfo.tags}}</span>
+                </mat-chip-list></mat-list-item>
+              </mat-list>
+
+              <div>
+                <button mat-button matStepperPrevious>Go Back</button>
+              </div>
+
+            </mat-step>
+          </mat-stepper>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+
+          <button mat-button (click)="stepper.reset()">Reset</button>
+
+          <button
+            mat-button
+            type="button"
+            color="primary"
+            [disabled]="!addPantryCtrl.valid"
+            type="submit"
+            data-test="confirmAddPantryButton"
+          >
+            ADD PRODUCT
+          </button>
+
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

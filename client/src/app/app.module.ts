@@ -19,13 +19,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { UserListComponent } from './users/user-list.component';
 import { HomeComponent } from './home/home.component';
@@ -68,7 +69,9 @@ const MATERIAL_MODULES: any[] = [
   MatSnackBarModule,
   MatStepperModule,
   MatChipsModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({

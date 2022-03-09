@@ -44,17 +44,16 @@ export class AddPantryComponent implements OnInit {
     ],
 
     purchaseDate: [
-      {type: 'required', message: 'description is required'},
+      {type: 'required', message: 'Purchase Date is required'},
     ],
 
     tags: [
-      {type: 'maxlength', message: 'too many tags here, cannot be more than 5'}
+      {type: 'maxlength', message: 'Too many tags here, cannot be more than 5'}
     ],
 
     notes: [
-      {type: 'required', message: 'notes is required'},
-      {type: 'minlength', message: 'notes must be at least 2 characters long'},
-      {type: 'maxlength', message: 'notes cannot be more than 500 characters long'}
+      {type: 'minlength', message: 'Notes must be at least 2 characters long'},
+      {type: 'maxlength', message: 'Notes cannot be more than 500 characters long'}
     ]
   };
 
@@ -65,7 +64,7 @@ export class AddPantryComponent implements OnInit {
 
     this.addPantryCtrl = this.fb.group({
 
-      pantryInfo: new FormGroup({
+      pantryRequiredInfo: new FormGroup({
 
         productId: new FormControl('', Validators.compose([
           Validators.required,
@@ -82,12 +81,15 @@ export class AddPantryComponent implements OnInit {
           Validators.required,
         ])),
 
+      }),
+
+      pantryOptionalInfo: new FormGroup({
+
         tags: new FormControl('', Validators.compose([
           Validators.maxLength(5)
         ])),
 
         notes: new FormControl('', Validators.compose([
-          Validators.required,
           Validators.minLength(2),
           Validators.maxLength(500)
         ])),
@@ -132,6 +134,5 @@ export class AddPantryComponent implements OnInit {
       this.tags.splice(index, 1);
     }
   }
-
 }
 

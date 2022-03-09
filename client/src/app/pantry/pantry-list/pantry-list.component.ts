@@ -14,7 +14,7 @@ export class PantryListComponent implements OnInit, OnDestroy {
   public serverFilteredPantrys: Pantry[];
   public filteredPantrys: Pantry[];
 
-  public pantryProduct: string;
+  public pantryProductId: string;
   public pantryPurchaseDate: string;
   public pantryTags: string;
   public pantryNotes: string;
@@ -30,7 +30,7 @@ export class PantryListComponent implements OnInit, OnDestroy {
   getPantrysFromServer(): void {
     this.unsub();
     this.getPantrySub = this.pantryService.getPantrys({
-      product: this.pantryProduct,
+      productId: this.pantryProductId,
       purchaseDate: this.pantryPurchaseDate,
       tags: this.pantryTags,
       notes: this.pantryNotes,
@@ -44,7 +44,7 @@ export class PantryListComponent implements OnInit, OnDestroy {
   public updateFilter(): void {
     this.filteredPantrys = this.pantryService.filterPantrys(
       this.serverFilteredPantrys, {
-        product: this.pantryProduct,
+        productId: this.pantryProductId,
         purchaseDate: this.pantryPurchaseDate,
         tags: this.pantryTags,
         notes: this.pantryNotes,

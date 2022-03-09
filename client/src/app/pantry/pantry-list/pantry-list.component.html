@@ -29,8 +29,8 @@
 
             <mat-form-field class="input-field">
               <mat-label>Product</mat-label>
-              <input matInput data-test="pantryProductInput" placeholder="Filter by product"
-              [(ngModel)]="pantryProduct" (input)="updateFilter()">
+              <input matInput data-test="pantryProductIdInput" placeholder="Filter by productId"
+              [(ngModel)]="pantryProductId" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
 
@@ -76,7 +76,7 @@
         <mat-nav-list class="pantry-nav-list">
           <h3 mat-subheader>Pantrys</h3>
           <a mat-list-item *ngFor="let pantry of this.filteredPantrys" [routerLink]="['/pantry', pantry._id]" class="pantry-list-item">
-            <h3 matLine class="pantry-list-product"> {{pantry.product}} </h3>
+            <h3 matLine class="pantry-list-productId"> {{pantry.productId}} </h3>
             <p matLine class="pantry-list-purchaseDate"> {{pantry.purchaseDate}} </p>
             <p matLine class="pantry-list-notes"> {{pantry.notes}} </p>
             <p matLine class="pantry-list-tags"> {{pantry.tags}} </p>
@@ -100,3 +100,6 @@
 
 </div>
 
+<button mat-fab class="add-pantry-fab" matTooltip="Add Pantry Product" matTooltipPosition="right" routerLink="/pantry/new" data-test="addPantryButton">
+  <mat-icon class="md-24" aria-label="Add Pantry Product">add</mat-icon>
+</button>
