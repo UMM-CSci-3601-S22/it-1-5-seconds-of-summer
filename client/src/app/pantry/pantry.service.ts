@@ -13,25 +13,21 @@ export class PantryService {
   }
 
   getPantrys(filters?: {
-    productId?: string;
-    purchaseDate?: string;
-    tags: string;
-    notes: string; }): Observable<Pantry[]> {
+    name?: string;
+    prodID?: string;
+    date?: string; }): Observable<Pantry[]> {
 
     let httpParams: HttpParams = new HttpParams();
 
     if (filters) {
-      if (filters.productId) {
-        httpParams = httpParams.set('productId', filters.productId);
+      if (filters.name) {
+        httpParams = httpParams.set('name', filters.name);
       }
-      if (filters.purchaseDate) {
-        httpParams = httpParams.set('purchaseDate', filters.purchaseDate);
+      if (filters.date) {
+        httpParams = httpParams.set('date', filters.date);
       }
-      if (filters.tags) {
-        httpParams = httpParams.set('tags', filters.tags);
-      }
-      if (filters.notes) {
-        httpParams = httpParams.set('notes', filters.notes);
+      if (filters.prodID) {
+        httpParams = httpParams.set('prodID', filters.prodID);
       }
     }
     return this.httpClient.get<Pantry[]>(this.pantryUrl, {
@@ -46,34 +42,28 @@ export class PantryService {
 
 
   filterPantrys(pantrys: Pantry[], filters: {
-    productId?: string;
-    purchaseDate?: string;
-    tags: string;
-    notes: string; }): Pantry[] {
+    name?: string;
+    date?: string;
+    prodID?: string;}): Pantry[] {
 
     let filteredPantrys = pantrys;
 
     // Filter by productId
-    if (filters.productId) {
-      filters.productId = filters.productId.toLowerCase();
+    if (filters.name) {
+      filters.name = filters.name.toLowerCase();
 
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.productId.toLowerCase().indexOf(filters.productId) !== -1);
+      filteredPantrys = filteredPantrys.filter(pantry => pantry.name.toLowerCase().indexOf(filters.name) !== -1);
     }
     // Filter by purchaseDate
-    if (filters.purchaseDate) {
-      filters.purchaseDate = filters.purchaseDate.toLowerCase();
+    if (filters.date) {
+      filters.date = filters.date.toLowerCase();
 
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.purchaseDate.toLowerCase().indexOf(filters.purchaseDate) !== -1);
+      filteredPantrys = filteredPantrys.filter(pantry => pantry.date.toLowerCase().indexOf(filters.date) !== -1);
     }
-    // Filter by tags
-    if (filters.tags) {
-      filters.tags = filters.tags.toLowerCase();
+    if (filters.prodID) {
+      filters.prodID = filters.prodID.toLowerCase();
 
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.tags.toLowerCase().indexOf(filters.tags) !== -1);
-    }
-    // Filter by notes
-    if (filters.notes) {
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.notes.indexOf(filters.notes) !== -1);
+      filteredPantrys = filteredPantrys.filter(pantry => pantry.date.toLowerCase().indexOf(filters.prodID) !== -1);
     }
 
     return filteredPantrys;

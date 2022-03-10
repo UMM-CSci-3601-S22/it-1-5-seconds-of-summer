@@ -30,7 +30,7 @@
             <mat-form-field class="input-field">
               <mat-label>Product</mat-label>
               <input matInput data-test="pantryProductIdInput" placeholder="Filter by productId"
-              [(ngModel)]="pantryProductId" (input)="updateFilter()">
+              [(ngModel)]="prodID" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
 
@@ -42,22 +42,9 @@
             </mat-form-field>
 
             <mat-form-field class="input-field">
-              <mat-label>Notes</mat-label>
-              <input matInput data-test="pantryNotesInput" placeholder="Filter by notes"
-              [(ngModel)]="pantryNotes" (input)="updateFilter()">
-              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field>
-          </div>
-
-
-          <div fxLayout="row wrap" fxLayoutGap="10px">
-            <!-- Examples of filtering in XXX (update after decide) -->
-            <!-- Current the code below are filter on Server -->
-
-            <mat-form-field class="input-field">
-              <mat-label>Tags</mat-label>
-              <input matInput id="pantry-Tags-input" placeholder="Filter by Tags"
-              [(ngModel)]="pantryTags" (input)="getPantrysFromServer()">
+              <mat-label>Name</mat-label>
+              <input matInput data-test="pantryNameInput" placeholder="Filter by name"
+              [(ngModel)]="pantryName" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
           </div>
@@ -76,10 +63,8 @@
         <mat-nav-list class="pantry-nav-list">
           <h3 mat-subheader>Pantrys</h3>
           <a mat-list-item *ngFor="let pantry of this.filteredPantrys" [routerLink]="['/pantry', pantry._id]" class="pantry-list-item">
-            <h3 matLine class="pantry-list-productId"> {{pantry.productId}} </h3>
-            <p matLine class="pantry-list-purchaseDate"> {{pantry.purchaseDate}} </p>
-            <p matLine class="pantry-list-notes"> {{pantry.notes}} </p>
-            <p matLine class="pantry-list-tags"> {{pantry.tags}} </p>
+            <h3 matLine class="pantry-list-name"> {{pantry.name}} </h3>
+            <p matLine class="pantry-list-date"> {{pantry.date}} </p>
           </a>
         </mat-nav-list>
       </mat-card-content>

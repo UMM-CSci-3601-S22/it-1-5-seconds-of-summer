@@ -14,10 +14,9 @@ export class PantryListComponent implements OnInit, OnDestroy {
   public serverFilteredPantrys: Pantry[];
   public filteredPantrys: Pantry[];
 
-  public pantryProductId: string;
+  public prodID: string;
   public pantryPurchaseDate: string;
-  public pantryTags: string;
-  public pantryNotes: string;
+  public pantryName: string;
   getPantrySub: Subscription;
   public viewType: 'card' | 'list' = 'card';
 
@@ -30,10 +29,9 @@ export class PantryListComponent implements OnInit, OnDestroy {
   getPantrysFromServer(): void {
     this.unsub();
     this.getPantrySub = this.pantryService.getPantrys({
-      productId: this.pantryProductId,
-      purchaseDate: this.pantryPurchaseDate,
-      tags: this.pantryTags,
-      notes: this.pantryNotes,
+      prodID: this.prodID,
+      date: this.pantryPurchaseDate,
+      name: this.pantryName,
     }).subscribe(returnedPantrys => {
       this.serverFilteredPantrys = returnedPantrys;
       this.updateFilter();
@@ -44,10 +42,9 @@ export class PantryListComponent implements OnInit, OnDestroy {
   public updateFilter(): void {
     this.filteredPantrys = this.pantryService.filterPantrys(
       this.serverFilteredPantrys, {
-        productId: this.pantryProductId,
-        purchaseDate: this.pantryPurchaseDate,
-        tags: this.pantryTags,
-        notes: this.pantryNotes,
+        prodID: this.prodID,
+        date: this.pantryPurchaseDate,
+        name: this.pantryName,
       });
   }
 

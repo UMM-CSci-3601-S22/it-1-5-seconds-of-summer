@@ -148,7 +148,7 @@
         <mat-card-content>
           <mat-nav-list class="product-nav-list">
             <h3 mat-subheader>Products</h3>
-            <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/product', product._id]" class="product-list-item">
+            <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/products', product._id]" class="product-list-item">
               <img matListImage [src]="product.image" *ngIf="this.product.image">
               <h3 matLine class="product-list-name"> {{product.name}} </h3>
               <p matLine class="product-list-category"> {{product.category}} </p>
@@ -177,6 +177,6 @@
 
 </div>
 
-<button mat-fab class="add-product-fab" matTooltip="Add Product" matTooltipPosition="right" routerLink="/product/new" data-test="addProductButton">
+<button mat-fab class="add-product-fab" matTooltip="Add Product" matTooltipPosition="right" routerLink="/products/new" data-test="addProductButton">
     <mat-icon class="md-24" aria-label="Add Product">add</mat-icon>
 </button>
