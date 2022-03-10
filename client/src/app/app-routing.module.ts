@@ -22,7 +22,6 @@ const routes: Routes = [
   {path: 'shoppinglist', component: ShoppinglistListComponent},
   {path: 'shoppinglist/:id', component: ShoppinglistProfileComponent},
   {path: 'pantry', component: PantryListComponent},
-  {path: 'pantry/new', component: AddPantryComponent},
   {path: 'products', component: ProductListComponent},
   {path: 'products/new', component: AddProductComponent},
   {path: 'products/:id', component: ProductProfileComponent},
