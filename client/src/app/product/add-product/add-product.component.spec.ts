@@ -106,18 +106,4 @@ describe('AddProductComponent', () => {
       expect(nameControl.valid).toBeTruthy();
     });
   });
-
-  describe('Managing tags', () => {
-    describe('Adding a tag', () => {
-      it('should be able to add a tag', () => {
-        // Do some setup?
-
-        addProductComponent.addTags({value: 'chocolate'} as MatChipInputEvent);
-
-        expect(addProductComponent.tags).toContain({keyword: 'chocolate'});
-
-        // Check some stuff
-      });
-    });
-  });
 });

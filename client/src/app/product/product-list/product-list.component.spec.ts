@@ -67,15 +67,15 @@ describe('Product list', () => {
   });
 
   it('contains a product named \'Fried Chicken\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.name === 'Fried Chicken')).toBe(true);
+    expect(productList.serverFilteredProducts.some((product: Product) => product.productName === 'Fried Chicken')).toBe(true);
   });
 
   it('contain a product named \'Roasted Steak\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.name === 'Roasted Steak')).toBe(true);
+    expect(productList.serverFilteredProducts.some((product: Product) => product.productName === 'Roasted Steak')).toBe(true);
   });
 
   it('doesn\'t contain a product named \'Crazy Sandwich\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.name === 'Crazy Sandwich')).toBe(false);
+    expect(productList.serverFilteredProducts.some((product: Product) => product.productName === 'Crazy Sandwich')).toBe(false);
   });//
 
   it('contain a description with \'chocolate cookies\'', () => {
@@ -102,8 +102,8 @@ describe('Product list', () => {
     expect(productList.serverFilteredProducts.some((product: Product) => product.category === 'dry goods')).toBe(false);
   });
 
-  it('contain a store with \'willeys\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.store === 'willeys')).toBe(true);
+  it('contain a store with \'willies\'', () => {
+    expect(productList.serverFilteredProducts.some((product: Product) => product.store === 'willies')).toBe(true);
   });
 
   it('doesn\'t contain a store with \'other\'', () => {
@@ -126,14 +126,6 @@ describe('Product list', () => {
   it('doesn\'t contain a notes \'This is a test, which should not be exist\'', () => {
     expect(productList.serverFilteredProducts.some((product: Product) =>
     product.notes === 'This is a test, which should not be exist')).toBe(false);
-  });
-
-  it('contain a tags with \'fried\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.tags === 'fried')).toBe(true);
-  });
-
-  it('doesn\'t contain a tags with \'AHaha\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.tags === 'AHaha')).toBe(false);
   });
 
   it('contain a lifespan with 5', () => {

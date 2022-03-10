@@ -12,45 +12,39 @@ export class MockProductService extends ProductService {
   static testProducts: Product[] = [
     {
       _id: 'fried chicken_id',
-      name: 'Fried Chicken',
+      productName: 'Fried Chicken',
       description: 'Delicious fried chicken legs and wings',
       brand: 'KFC',
       category: 'deli',
-      store: 'willeys',
+      store: 'willies',
       location: 'Area A Row 1',
       notes: 'This is fried chicken, by KFC',
-      tags: 'fried',
       lifespan: 2,
-      threshold: 23,
-      image: null
+      threshold: 23
     },
     {
       _id: 'roasted bread_id',
-      name: 'Roasted Steak',
+      productName: 'Roasted Steak',
       description: 'Delicious roasted Bread',
       brand: 'SomeBread',
       category: 'bakery',
-      store: 'pomme de terre food coop',
+      store: 'coop',
       location: 'Area B Shelves 2',
       notes: 'This is roasted steak, by SomeBread',
-      tags: 'Roasted',
       lifespan: 1,
-      threshold: 15,
-      image: null
+      threshold: 15
     },
     {
       _id: 'chocolate cookies_id',
-      name: 'Chocolate Cookies',
+      productName: 'Chocolate Cookies',
       description: 'Delicious chocolate cookies',
       brand: 'CookieCompany',
       category: 'desserts',
-      store: 'pomme de terre food coop',
+      store: 'coop',
       location: 'N/A',
       notes: 'This is chocolate cookies, by CookieCompany',
-      tags: 'Chocolate',
       lifespan: 5,
-      threshold: 43,
-      image: null
+      threshold: 43
     }
   ];
 
