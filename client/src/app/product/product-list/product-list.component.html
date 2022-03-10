@@ -34,7 +34,7 @@
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
 
-            <!-- <mat-form-field class="input-field">
+            <mat-form-field class="input-field">
               <mat-label>Description</mat-label>
               <input matInput data-test="productDescriptionInput" placeholder="Filter by description"
               [(ngModel)]="productDescription" (input)="updateFilter()">
@@ -60,7 +60,7 @@
               <input matInput data-test="productNotesInput" placeholder="Filter by notes"
               [(ngModel)]="productNotes" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field> -->
+            </mat-form-field>
           </div>
 
 
@@ -68,12 +68,12 @@
             <!-- Examples of filtering in XXX (update after decide) -->
             <!-- Current the code below are filter on Server -->
 
-            <!-- <mat-form-field class="input-field">
+            <mat-form-field class="input-field">
               <mat-label>Lifespan</mat-label>
               <input matInput data-test="productLifespanInput" type="number" placeholder="Filter by lifespan (0-200)"
               min="0" max="200" [(ngModel)]="productLifespan" (input)="getProductsFromServer()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field> -->
+            </mat-form-field>
 
             <mat-form-field class="input-field">
               <mat-label>Threshold</mat-label>
@@ -82,7 +82,7 @@
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
 
-            <!-- <mat-form-field class="input-field">
+            <mat-form-field class="input-field">
               <mat-label>Category</mat-label>
               <mat-select (selectionChange)="getProductsFromServer()" [(ngModel)]="productCategory" data-test="productCategorySelect">
                 <mat-option>--</mat-option>
@@ -96,7 +96,7 @@
                 <mat-option value="desserts">Desserts</mat-option>
               </mat-select>
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field> -->
+            </mat-form-field>
 
             <mat-form-field class="input-field">
               <mat-label>Store</mat-label>
@@ -108,22 +108,15 @@
               </mat-select>
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
-
-
-            <!-- <mat-form-field class="input-field">
-              <mat-label>Tags</mat-label>
-              <input matInput id="product-tags-input" placeholder="Filter by Tags"
-              [(ngModel)]="productTags" (input)="getProductsFromServer()">
-              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field> -->
           </div>
 
           <br>
           <div fxLayout="row wrap" fxLayoutGap="10px">
-            <mat-button-toggle-group name="view type" aria-label="View type" [(ngModel)]="viewType">
-              <mat-button-toggle value="card">Card View</mat-button-toggle>
-              <mat-button-toggle value="list">List View</mat-button-toggle>
-            </mat-button-toggle-group>
+            <label>View type: </label>
+            <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
+              <mat-radio-button value="card">Card</mat-radio-button>
+              <mat-radio-button value="list">List</mat-radio-button>
+            </mat-radio-group>
           </div>
 
         </mat-card-content>

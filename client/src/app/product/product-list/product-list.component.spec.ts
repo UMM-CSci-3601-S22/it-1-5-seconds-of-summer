@@ -79,7 +79,7 @@ describe('Product list', () => {
   });//
 
   it('contain a description with \'chocolate cookies\'', () => {
-    expect(productList.serverFilteredProducts.some((product: Product) => product.description === 'chocolate cookies')).toBe(true);
+    expect(productList.serverFilteredProducts.some((product: Product) => product.description === 'Delicious chocolate cookies')).toBe(true);
   });
 
   it('doesn\'t contain a description \'not exist\'', () => {

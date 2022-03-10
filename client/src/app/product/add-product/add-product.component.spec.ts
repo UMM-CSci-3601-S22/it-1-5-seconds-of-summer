@@ -66,7 +66,7 @@ describe('AddProductComponent', () => {
     let nameControl: AbstractControl;
 
     beforeEach(() => {
-      nameControl = addProductComponent.addProductForm.controls.name;
+      nameControl = addProductComponent.addProductForm.controls.productName;
     });
 
     it('should not allow empty names', () => {

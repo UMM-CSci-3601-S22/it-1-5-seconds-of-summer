@@ -32,7 +32,6 @@ export class AddProductComponent implements OnInit {
       {type: 'required', message: 'Name is required'},
       {type: 'minlength', message: 'Name must be at least 2 characters long'},
       {type: 'maxlength', message: 'Name cannot be more than 50 characters long'},
-      {type: 'existingName', message: 'Name has already been taken'}
     ],
 
     description: [
@@ -97,20 +96,13 @@ export class AddProductComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50),
-        (fc) => {
-          if (fc.value.toLowerCase() === 'abc123' || fc.value.toLowerCase() === '123abc') {
-            return ({existingName: true});
-          } else {
-            return null;
-          }
-        },
       ])),
 
       // We allow alphanumeric input and limit the length.
       description: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(200)
+        Validators.maxLength(500)
       ])),
 
       // We allow alphanumeric input and limit the length.
@@ -141,7 +133,7 @@ export class AddProductComponent implements OnInit {
       notes: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(50)
+        Validators.maxLength(500)
       ])),
 
       lifespan: new FormControl('', Validators.compose([

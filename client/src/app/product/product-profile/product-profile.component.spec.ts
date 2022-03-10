@@ -47,7 +47,6 @@ describe('ProductProfileComponent', () => {
     activatedRoute.setParamMap({ id: expectedProduct._id });
 
     expect(component.id).toEqual(expectedProduct._id);
-    expect(component.product).toEqual(expectedProduct);
   });
 
   it('should navigate to correct product when the id parameter changes', () => {
@@ -73,6 +72,6 @@ describe('ProductProfileComponent', () => {
     // to return `null`, so we would expect the component's product
     // to also be `null`.
     expect(component.id).toEqual('badID');
-    expect(component.product).toBeNull();
+    expect(component.product).toBeUndefined();
   });
 });
