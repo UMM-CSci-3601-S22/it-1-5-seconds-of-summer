@@ -10,7 +10,6 @@ import { ProductProfileComponent } from './product/product-profile/product-profi
 import { PantryListComponent } from './pantry/pantry-list/pantry-list.component';
 import { ShoppinglistProfileComponent } from './shoppinglist/shoppinglist-profile/shoppinglist-profile.component';
 import { ShoppinglistListComponent } from './shoppinglist/shoppinglist-list/shoppinglist-list.component';
-import { AddPantryComponent } from './pantry/add-pantry/add-pantry.component';
 
 // Note that the 'users/new' route needs to come before 'users/:id'.
 // If 'users/:id' came first, it would accidentally catch requests to
