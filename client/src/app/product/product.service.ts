@@ -13,7 +13,7 @@ export class ProductService {
   }
 
   getProducts(filters?: {
-    name?: string;
+    productName?: string;
     description: string;
     brand?: string;
     category?: ProductCategory;
@@ -27,33 +27,33 @@ export class ProductService {
     let httpParams: HttpParams = new HttpParams();
 
     if (filters) {
-      if (filters.name) {
-        httpParams = httpParams.set('name', filters.name);
+      if (filters.productName) {
+        httpParams = httpParams.set('productName', filters.productName);
       }
-      if (filters.brand) {
-        httpParams = httpParams.set('brand', filters.brand);
-      }
-      if (filters.description) {
-        httpParams = httpParams.set('description', filters.description);
-      }
-      if (filters.category) {
-        httpParams = httpParams.set('category', filters.category);
-      }
+      // if (filters.brand) {
+      //   httpParams = httpParams.set('brand', filters.brand);
+      // }
+      // if (filters.description) {
+      //   httpParams = httpParams.set('description', filters.description);
+      // }
+      // if (filters.category) {
+      //   httpParams = httpParams.set('category', filters.category);
+      // }
       if (filters.store) {
         httpParams = httpParams.set('store', filters.store);
-      }
-      if (filters.location) {
-        httpParams = httpParams.set('location', filters.location);
-      }
-      if (filters.notes) {
-        httpParams = httpParams.set('notes', filters.notes);
-      }
-      if (filters.tags) {
-        httpParams = httpParams.set('tags', filters.tags);
-      }
-      if (filters.lifespan) {
-        httpParams = httpParams.set('lifespan', filters.lifespan.toString());
-      }
+         }
+      // if (filters.location) {
+      //   httpParams = httpParams.set('location', filters.location);
+      // }
+      // if (filters.notes) {
+      //   httpParams = httpParams.set('notes', filters.notes);
+      // }
+      // if (filters.tags) {
+      //   httpParams = httpParams.set('tags', filters.tags);
+      // }
+      // if (filters.lifespan) {
+      //   httpParams = httpParams.set('lifespan', filters.lifespan.toString());
+      // }
       if (filters.threshold) {
         httpParams = httpParams.set('threshold', filters.threshold.toString());
       }
@@ -70,53 +70,53 @@ export class ProductService {
 
   //Filter all string type
   filterProducts(products: Product[], filters: {
-    name?: string;
+    productName?: string;
     description?: string;
     brand?: string;
     category?: ProductCategory;
     store?: ShoppingStore;
-    location?: string;
-    notes?: string;
-    tags?: string;
+     location?: string;
+    //notes?: string;
+    //tags?: string;
     lifespan?: number;
     threshold?: number; }): Product[] {
 
     let filteredProducts = products;
 
     // Filter by name
-    if (filters.name) {
-      filters.name = filters.name.toLowerCase();
+    if (filters.productName) {
+      filters.productName = filters.productName.toLowerCase();
 
-      filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().indexOf(filters.name) !== -1);
+      filteredProducts = filteredProducts.filter(product => product.productName.toLowerCase().indexOf(filters.productName) !== -1);
     }
     // Filter by description
-    if (filters.description) {
-      filters.description = filters.description.toLowerCase();
+    // if (filters.description) {
+    //   filters.description = filters.description.toLowerCase();
 
-      filteredProducts = filteredProducts.filter(product => product.description.toLowerCase().indexOf(filters.description) !== -1);
-    }
-    // Filter by brand
-    if (filters.brand) {
-      filters.brand = filters.brand.toLowerCase();
+    //   filteredProducts = filteredProducts.filter(product => product.description.toLowerCase().indexOf(filters.description) !== -1);
+    // }
+    // // Filter by brand
+    // if (filters.brand) {
+    //   filters.brand = filters.brand.toLowerCase();
 
-      filteredProducts = filteredProducts.filter(product => product.brand.toLowerCase().indexOf(filters.brand) !== -1);
-    }
-    // Filter by category
-    if (filters.category) {
-      filteredProducts = filteredProducts.filter(product => product.category.indexOf(filters.category) !== -1);
-    }
-    // Filter by store
+    //   filteredProducts = filteredProducts.filter(product => product.brand.toLowerCase().indexOf(filters.brand) !== -1);
+    // }
+    // // Filter by category
+    // if (filters.category) {
+    //   filteredProducts = filteredProducts.filter(product => product.category.indexOf(filters.category) !== -1);
+    // }
+    // // Filter by store
     if (filters.store) {
       filteredProducts = filteredProducts.filter(product => product.store.indexOf(filters.store) !== -1);
     }
     // Filter by location
-    if (filters.location) {
-      filters.location = filters.location.toLowerCase();
+    // if (filters.location) {
+    //   filters.location = filters.location.toLowerCase();
 
-      filteredProducts = filteredProducts.filter(product => product.location.toLowerCase().indexOf(filters.location) !== -1);
-    }
+    //   filteredProducts = filteredProducts.filter(product => product.location.toLowerCase().indexOf(filters.location) !== -1);
+    // }
     // Filter by notes
-    if (filters.notes) {
+    /*if (filters.notes) {
       filters.notes = filters.notes.toLowerCase();
 
       filteredProducts = filteredProducts.filter(product => product.notes.toLowerCase().indexOf(filters.notes) !== -1);
@@ -127,10 +127,11 @@ export class ProductService {
 
       filteredProducts = filteredProducts.filter(product => product.tags.toLowerCase().indexOf(filters.tags) !== -1);
     }
+    */
     // Filter by lifespan
-    if (filters.lifespan) {
-      filteredProducts = filteredProducts.slice(0, filters.lifespan);
-    }
+    // if (filters.lifespan) {
+    //   filteredProducts = filteredProducts.slice(0, filters.lifespan);
+    // }
     // Filter by threshold
     if (filters.threshold) {
       filteredProducts = filteredProducts.slice(0, filters.threshold);

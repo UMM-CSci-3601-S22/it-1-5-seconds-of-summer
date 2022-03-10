@@ -1,267 +1,163 @@
 <div fxLayout="row">
   <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
-    <mat-card class="add-product-title-card">
+    <form [formGroup]="addProductForm" (ngSubmit)="submitForm();">
+    <mat-card class="add-product-card">
 
         <mat-card-header>
           <mat-card-title class="add-product-title">Add New Product</mat-card-title>
-          <mat-card-subtitle class="add-product-subtitle">Welcome! You are in the process of adding a product to the library. <br>
+          <mat-card-subtitle>Welcome! You are in the process of adding a product to the library. <br>
             Please fill in the corresponding information according to the instructions in the form below. <br>
             <b>We recommend you search whether the item is already in the library before adding it to avoid repeatedly adding the product.</b></mat-card-subtitle>
         </mat-card-header>
 
-    </mat-card>
-  </div>
-</div>
-
-<div fxLayout="row">
-  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
-    <form [formGroup]="addProductCtrl" (ngSubmit)="submitForm();">
-      <mat-card class="add-product-form-card">
         <mat-card-content fxLayout="column">
-          <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
 
-            <!-- Group of Step 1 -->
-            <mat-step formGroupName="productBasicInfo" [stepControl]="addProductCtrl.get('productBasicInfo')" errorMessage="Required">
-              <ng-template matStepLabel>Product Basic Information</ng-template>
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Name</mat-label>
-                <input matInput
-                  placeholder="Product Name"
-                  formControlName="name"
-                  required/>
-                <mat-error *ngFor="let validation of addProductValidationMessages.name">
-                  <mat-error class="error-message" data-test="nameError"
-                            *ngIf="addProductCtrl.get('productBasicInfo').get('name').hasError(validation.type) && (addProductCtrl.get('productBasicInfo').get('name').dirty || addProductCtrl.get('productBasicInfo').get('name').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput
+              placeholder="Name"
+              formControlName="productName"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.productName">
+              <mat-error class="error-message" data-test="nameError"
+                        *ngIf="addProductForm.get('productName').hasError(validation.type) && (addProductForm.get('productName').dirty || addProductForm.get('productName').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Brand</mat-label>
-                <input matInput
-                  placeholder="Product Brand"
-                  formControlName="brand"
-                  required>
-                <mat-error *ngFor="let validation of addProductValidationMessages.brand">
-                  <mat-error class="error-message" data-test="brandError"
-                            *ngIf="addProductCtrl.get('productBasicInfo').get('brand').hasError(validation.type) && (addProductCtrl.get('productBasicInfo').get('brand').dirty || addProductCtrl.get('productBasicInfo').get('brand').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput
+              placeholder="Description"
+              formControlName="description"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.description">
+              <mat-error class="error-message" data-test="descriptionError"
+                        *ngIf="addProductForm.get('description').hasError(validation.type) && (addProductForm.get('description').dirty || addProductForm.get('description').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Category</mat-label>
-                <mat-select required formControlName="category">
-                  <mat-option value="dry goods">Dry goods</mat-option>
-                  <mat-option value="bakery">Bakery</mat-option>
-                  <mat-option value="produce">Produce</mat-option>
-                  <mat-option value="deli">Deli</mat-option>
-                  <mat-option value="canned good">Canned good</mat-option>
-                  <mat-option value="cereals">Cereals</mat-option>
-                  <mat-option value="seafood">Seafood</mat-option>
-                  <mat-option value="desserts">Desserts</mat-option>
-                </mat-select>
-                <mat-error *ngIf="addProductCtrl.get('productBasicInfo').get('category').hasError('required')">You must make a selection</mat-error>
-                <mat-error *ngIf="addProductCtrl.get('productBasicInfo').get('category').hasError('pattern') && !addProductCtrl.get('productBasicInfo').get('category').hasError('required')">
-                  Your selection is invalid
-                </mat-error>
-              </mat-form-field>
+          <mat-form-field>
+            <mat-label>Brand</mat-label>
+            <input matInput
+              placeholder="Brand"
+              formControlName="brand"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.brand">
+              <mat-error class="error-message" data-test="brandError"
+                        *ngIf="addProductForm.get('brand').hasError(validation.type) && (addProductForm.get('brand').dirty || addProductForm.get('brand').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Description</mat-label>
-                <textarea matInput
-                  placeholder="Product Description"
-                  formControlName="description"
-                  required>
-                </textarea>
-                <mat-error *ngFor="let validation of addProductValidationMessages.description">
-                  <mat-error class="error-message" data-test="descriptionError"
-                            *ngIf="addProductCtrl.get('productBasicInfo').get('description').hasError(validation.type) && (addProductCtrl.get('productBasicInfo').get('description').dirty || addProductCtrl.get('productBasicInfo').get('description').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
+          <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select required formControlName="category">
+              <mat-option value="dry goods">Dry goods</mat-option>
+              <mat-option value="bakery">Bakery</mat-option>
+              <mat-option value="produce">Produce</mat-option>
+              <mat-option value="deli">Deli</mat-option>
+              <mat-option value="canned good">Canned good</mat-option>
+              <mat-option value="cereals">Cereals</mat-option>
+              <mat-option value="seafood">Seafood</mat-option>
+              <mat-option value="desserts">Desserts</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addProductForm.get('category').hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="addProductForm.get('category').hasError('pattern') && !addProductForm.get('category').hasError('required')">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
 
-              <div>
-                <button mat-button matStepperNext type="button">Next</button>
-              </div>
-            </mat-step>
+          <mat-form-field>
+            <mat-label>Store</mat-label>
+            <mat-select required formControlName="store">
+              <mat-option value="willies">Willey's</mat-option>
+              <mat-option value="coop">Pomme de Terre Food Coop</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addProductForm.get('store').hasError('required')">You must make a selection</mat-error>
+            <mat-error *ngIf="addProductForm.get('store').hasError('pattern') && !addProductForm.get('store').hasError('required')">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
 
-            <!-- Group of Step 2 -->
-            <mat-step formGroupName="productStoreInfo" [stepControl]="addProductCtrl.get('productStoreInfo')" errorMessage="Required">
-              <ng-template matStepLabel>Product Store Information</ng-template>
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input matInput
+              placeholder="Location"
+              formControlName="location"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.location">
+              <mat-error class="error-message" data-test="locationError"
+                        *ngIf="addProductForm.get('location').hasError(validation.type) && (addProductForm.get('location').dirty || addProductForm.get('location').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Store</mat-label>
-                <mat-select required formControlName="store">
-                  <mat-option value="willeys">Willey's</mat-option>
-                  <mat-option value="pomme de terre food coop">Pomme de Terre Food Coop</mat-option>
-                  <mat-option value="other">Other</mat-option>
-                </mat-select>
-                <mat-error *ngIf="addProductCtrl.get('productStoreInfo').get('store').hasError('required')">You must make a selection</mat-error>
-                <mat-error *ngIf="addProductCtrl.get('productStoreInfo').get('store').hasError('pattern') && !addProductCtrl.get('productStoreInfo').get('store').hasError('required')">
-                  Your selection is invalid
-                </mat-error>
-              </mat-form-field>
+          <mat-form-field>
+            <mat-label>Notes</mat-label>
+            <input matInput
+              placeholder="Notes"
+              formControlName="notes"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.notes">
+              <mat-error class="error-message" data-test="notesError"
+                        *ngIf="addProductForm.get('notes').hasError(validation.type) && (addProductForm.get('notes').dirty || addProductForm.get('notes').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Location</mat-label>
-                <input matInput
-                  placeholder="Location"
-                  formControlName="location"
-                  required>
-                <mat-error *ngFor="let validation of addProductValidationMessages.location">
-                  <mat-error class="error-message" data-test="locationError"
-                            *ngIf="addProductCtrl.get('productStoreInfo').get('location').hasError(validation.type) && (addProductCtrl.get('productStoreInfo').get('location').dirty || addProductCtrl.get('productStoreInfo').get('location').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
 
-              <div>
-                <button mat-button matStepperPrevious type="button">Previous</button>
-                <button mat-button matStepperNext type="button">Next</button>
-              </div>
-            </mat-step>
+          <mat-form-field>
+            <mat-label>Lifespan</mat-label>
+            <input matInput
+              type="number"
+              placeholder="Lifespan"
+              formControlName="lifespan"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.lifespan">
+              <mat-error class="error-message" data-test="lifespanError"
+                        *ngIf="addProductForm.get('lifespan').hasError(validation.type) && (addProductForm.get('lifespan').dirty || addProductForm.get('lifespan').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-            <!-- Group of Step 3 -->
-            <mat-step formGroupName="productStorageInfo" [stepControl]="addProductCtrl.get('productStorageInfo')" errorMessage="Required">
-              <ng-template matStepLabel>Product Storage Information</ng-template>
+          <mat-form-field>
+            <mat-label>Threshold</mat-label>
+            <input matInput
+              type="number"
+              placeholder="Threshold"
+              formControlName="threshold"
+              required>
+            <mat-error *ngFor="let validation of addProductValidationMessages.threshold">
+              <mat-error class="error-message" data-test="thresholdError"
+                        *ngIf="addProductForm.get('threshold').hasError(validation.type) && (addProductForm.get('threshold').dirty || addProductForm.get('threshold').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
 
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Lifespan</mat-label>
-                <input matInput
-                  type="number"
-                  placeholder="Lifespan"
-                  formControlName="lifespan"
-                  required>
-                <mat-error *ngFor="let validation of addProductValidationMessages.lifespan">
-                  <mat-error class="error-message" data-test="lifespanError"
-                            *ngIf="addProductCtrl.get('productStorageInfo').get('lifespan').hasError(validation.type) && (addProductCtrl.get('productStorageInfo').get('lifespan').dirty || addProductCtrl.get('productStorageInfo').get('lifespan').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Threshold</mat-label>
-                <input matInput
-                  type="number"
-                  placeholder="Threshold"
-                  formControlName="threshold"
-                  required>
-                <mat-error *ngFor="let validation of addProductValidationMessages.threshold">
-                  <mat-error class="error-message" data-test="thresholdError"
-                            *ngIf="addProductCtrl.get('productStorageInfo').get('threshold').hasError(validation.type) && (addProductCtrl.get('productStorageInfo').get('threshold').dirty || addProductCtrl.get('productStorageInfo').get('threshold').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
-
-              <div>
-                <button mat-button matStepperPrevious type="button">Previous</button>
-                <button mat-button matStepperNext type="button">Next</button>
-              </div>
-            </mat-step>
-
-            <!-- Group of Step 4 -->
-            <mat-step formGroupName="productExtraInfo" [stepControl]="addProductCtrl.get('productExtraInfo')" [optional]="true">
-              <ng-template matStepLabel>Product Extra Information</ng-template>
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Notes</mat-label>
-                <textarea matInput
-                  placeholder="Notes"
-                  formControlName="notes">
-                </textarea>
-                <mat-error *ngFor="let validation of addProductValidationMessages.notes">
-                  <mat-error class="error-message" data-test="notesError"
-                            *ngIf="addProductCtrl.get('productExtraInfo').get('notes').hasError(validation.type) && (addProductCtrl.get('productExtraInfo').get('notes').dirty || addProductCtrl.get('productExtraInfo').get('notes').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
-
-              <mat-form-field class="add-product-elements" appearance="outline">
-                <mat-label>Tags</mat-label>
-                <mat-chip-list #chipList aria-label="tags">
-                  <mat-chip *ngFor="let tag of tags" (removed)="removeTags(tag)">
-                    {{tag.keyword}}
-                    <button matChipRemove>
-                      <mat-icon>cancel</mat-icon>
-                    </button>
-                  </mat-chip>
-                  <input matInput placeholder="Tags"
-                        [matChipInputFor] = "chipList"
-                        [matChipInputSeparatorKeyCodes] = "separatorKeysCodes"
-                        [matChipInputAddOnBlur] = "addOnBlur"
-                        (matChipInputTokenEnd) = "addTags($event)">
-                </mat-chip-list>
-                <mat-error *ngFor="let validation of addProductValidationMessages.tags">
-                  <mat-error class="error-message" data-test="tagsError"
-                            *ngIf="addProductCtrl.get('productExtraInfo').get('tags').hasError(validation.type) && (addProductCtrl.get('productExtraInfo').get('tags').dirty || addProductCtrl.get('productExtraInfo').get('tags').touched)">
-                    {{validation.message}}
-                  </mat-error>
-                </mat-error>
-              </mat-form-field>
-
-              <div>
-                <button mat-button matStepperPrevious type="button">Previous</button>
-                <button mat-button matStepperNext type="button">To Confirmation</button>
-              </div>
-            </mat-step>
-
-            <!-- Confirmation Step -->
-            <mat-step>
-              <ng-template matStepLabel>Information Confirmation</ng-template>
-              <p>You are almost done!</p>
-              <p>Please check the information below:</p>
-
-              <mat-list>
-                <mat-list-item> <strong>Product Name: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.name}}</mat-list-item>
-                <mat-list-item> <strong>Product Brand: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.brand}}</mat-list-item>
-                <mat-list-item> <strong>Category: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.category}}</mat-list-item>
-                <mat-list-item> <strong>Description: </strong> &nbsp; {{this.addProductCtrl.value.productBasicInfo.description}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item> <strong>Store: </strong> &nbsp; {{this.addProductCtrl.value.productStoreInfo.store}}</mat-list-item>
-                <mat-list-item> <strong>Location: </strong> &nbsp; {{this.addProductCtrl.value.productStoreInfo.location}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item> <strong>LifeSpan: </strong> &nbsp; {{this.addProductCtrl.value.productStorageInfo.lifespan}} days</mat-list-item>
-                <mat-list-item> <strong>Threshold: </strong> &nbsp; {{this.addProductCtrl.value.productStorageInfo.threshold}} days</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item> <strong>Notes: </strong> &nbsp; {{this.addProductCtrl.value.productExtraInfo.notes}}</mat-list-item>
-                <mat-list-item><mat-chip-list> <strong>Tags: </strong> &nbsp;
-                  <span *ngFor="let tag of tags">{{this.addProductCtrl.value.productExtraInfo.tags}}</span>
-                </mat-chip-list></mat-list-item>
-              </mat-list>
-
-              <div>
-                <button mat-button matStepperPrevious>Go Back</button>
-              </div>
-
-            </mat-step>
-          </mat-stepper>
         </mat-card-content>
 
         <mat-card-actions align="end">
-
-          <button mat-button (click)="stepper.reset()">Reset</button>
-
           <button
             mat-button
             type="button"
             color="primary"
-            [disabled]="!addProductCtrl.valid"
+            [disabled]="!addProductForm.valid"
             type="submit"
             data-test="confirmAddProductButton"
           >
             ADD PRODUCT
           </button>
-
         </mat-card-actions>
-      </mat-card>
-    </form>
+    </mat-card>
+  </form>
   </div>
 </div>
-

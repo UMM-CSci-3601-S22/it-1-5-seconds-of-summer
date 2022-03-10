@@ -27,14 +27,19 @@ export interface Tag {
 
 export class AddProductComponent implements OnInit {
 
-  addProductForm: FormGroup;
+  isLinear = false;
+  addProductCtrl: FormGroup;
+
   product: Product;
 
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags: Tag[] = [];
 
   // not sure if this name is magical and making it be found or if I'm missing something,
   // but this is where the red text that shows up (when there is invalid input) comes from
   addProductValidationMessages = {
-    productName: [
+    name: [
       {type: 'required', message: 'Name is required'},
       {type: 'minlength', message: 'Name must be at least 2 characters long'},
       {type: 'maxlength', message: 'Name cannot be more than 50 characters long'},
@@ -75,6 +80,10 @@ export class AddProductComponent implements OnInit {
       {type: 'maxlength', message: 'notes cannot be more than 500 characters long'}
     ],
 
+    tags: [
+      {type: 'maxlength', message: 'too many tags here, cannot be more than 5'}
+    ],
+
     lifespan: [
       {type: 'required', message: 'Lifespan is required'},
       {type: 'min', message: 'Lifespan must be at least 1'},
@@ -93,93 +102,84 @@ export class AddProductComponent implements OnInit {
   constructor(private fb: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar, private router: Router) {
   }
 
- createForms() {
+  createProductForms() {
 
-    // add product form validations
-    this.addProductForm = this.fb.group({
+    this.addProductCtrl = this.fb.group({
 
-      // We allow alphanumeric input and limit the length.
-      productName: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50),
-        (fc) => {
-          if (fc.value.toLowerCase() === 'abc123' || fc.value.toLowerCase() === '123abc') {
-            return ({existingName: true});
-          } else {
-            return null;
-          }
-        },
-      ])),
+      productBasicInfo: this.fb.group({
+        name: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+        ])),
 
-      // We allow alphanumeric input and limit the length.
-      description: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(200)
-      ])),
+        brand: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50)
+        ])),
 
-      // We allow alphanumeric input and limit the length.
-      brand: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50)
-      ])),
+        category: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.pattern('^(dry goods|bakery|produce|deli|canned good|cereals|seafood|desserts)$'),
+        ])),
 
-      category: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^(dry goods|bakery|produce|deli|canned good|cereals|seafood|desserts)$'),
-      ])),
+        description: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(500)
+        ])),
+      }),
 
-      store: new FormControl('willies', Validators.compose([
-        Validators.required,
-        Validators.pattern('^(willies|Coop)$'),
-      ])),
+      productStoreInfo: this.fb.group({
+        store: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.pattern('^(willeys|pomme de terre food coop|other)$'),
+        ])),
 
-      // We allow alphanumeric input and limit the length.
-      location: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(100)
-      ])),
+        location: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(100)
+        ])),
+      }),
 
-      // We allow alphanumeric input and limit the length.
-      notes: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50)
-      ])),
+      productStorageInfo: this.fb.group({
+        lifespan: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.min(1),
+          Validators.max(365),
+          Validators.pattern('^[0-9]+$')
+        ])),
 
-      lifespan: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.min(1),
-        Validators.max(365),
-        // In the HTML, we set type="number" on this field. That guarantees that the value of this field is numeric,
-        // but not that it's a whole number. (The product could still type -27.3232, for example.) So, we also need
-        // to include this pattern.
-        Validators.pattern('^[0-9]+$')
-      ])),
+        threshold: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.min(0),
+          Validators.max(999),
+          Validators.pattern('^[0-9]+$')
+        ])),
+      }),
 
-      threshold: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.min(0),
-        Validators.max(999),
-        // In the HTML, we set type="number" on this field. That guarantees that the value of this field is numeric,
-        // but not that it's a whole number. (The product could still type -27.3232, for example.) So, we also need
-        // to include this pattern.
-        Validators.pattern('^[0-9]+$')
-      ])),
+      productExtraInfo: this.fb.group({
+        notes: new FormControl('', Validators.compose([
+          Validators.minLength(2),
+          Validators.maxLength(500)
+        ])),
+
+        tags: new FormControl('', Validators.compose([
+          Validators.maxLength(5)
+        ])),
+      })
     });
   }
 
-
   ngOnInit() {
-    this.createForms();
+    this.createProductForms();
   }
 
   submitForm() {
-    this.productService.addProduct(this.addProductForm.value).subscribe(newID => {
-      this.snackBar.open('Added Product ' + this.addProductForm.value.productName, null, {
+    this.productService.addProduct(this.addProductCtrl.value).subscribe(newID => {
+      this.snackBar.open('Added Product ' + this.addProductCtrl.value.productBasicInfo.name, null, {
         duration: 2000,
       });
       this.router.navigate(['/products/', newID]);
@@ -189,4 +189,25 @@ export class AddProductComponent implements OnInit {
       });
     });
   }
+
+  addTags(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add tags
+    if (value) {
+      this.tags.push({keyword: value});
+    }
+
+    // Clear the input value
+    event.chipInput?.clear();
+  }
+
+  removeTags(tags: Tag): void {
+    const index = this.tags.indexOf(tags);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
 }

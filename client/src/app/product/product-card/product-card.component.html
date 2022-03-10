@@ -1,8 +1,8 @@
 <mat-card class="product-card" *ngIf="this.product">
   <mat-card-header>
-    <img mat-card-image [src]="this.product.image" class="product-image" *ngIf="this.product.image">
+    <!-- <img mat-card-image [src]="this.product.image" class="product-image" *ngIf="this.product.image"> -->
     <mat-card-subtitle class="product-card-category">{{ this.product.category }}</mat-card-subtitle>
-    <mat-card-title class="product-card-name">{{ this.product.name }}</mat-card-title>
+    <mat-card-title class="product-card-name">{{ this.product.productName }}</mat-card-title>
     <mat-card-subtitle class="product-card-brand">{{ this.product.brand }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content *ngIf="!this.simple">

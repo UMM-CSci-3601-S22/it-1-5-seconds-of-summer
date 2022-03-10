@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   getProductsFromServer(): void {
     this.unsub();
     this.getProductSub = this.productService.getProducts({
-      name: this.productName,
+      productName: this.productName,
       description: this.productDescription,
       brand: this.productBrand,
       category: this.productCategory,
@@ -57,14 +57,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
   public updateFilter(): void {
     this.filteredProducts = this.productService.filterProducts(
       this.serverFilteredProducts, {
-        name: this.productName,
+        productName: this.productName,
         description: this.productDescription,
         brand: this.productBrand,
         category: this.productCategory,
         store: this.productStore,
         location: this.productLocation,
-        notes: this.productNotes,
-        tags: this.productTags,
+        // notes: this.productNotes,
+        // tags: this.productTags,
         lifespan: this.productLifespan,
         threshold: this.productThreshold
       });
