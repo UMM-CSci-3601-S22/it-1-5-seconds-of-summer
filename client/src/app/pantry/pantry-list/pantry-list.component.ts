@@ -6,7 +6,8 @@ import { PantryService } from '../pantry.service';
 @Component({
   selector: 'app-pantry-list',
   templateUrl: './pantry-list.component.html',
-  styleUrls: ['./pantry-list.component.scss']
+  styleUrls: ['./pantry-list.component.scss'],
+  providers: []
 })
 
 export class PantryListComponent implements OnInit, OnDestroy {
@@ -15,8 +16,8 @@ export class PantryListComponent implements OnInit, OnDestroy {
   public filteredPantrys: Pantry[];
 
   public prodID: string;
-  public pantryPurchaseDate: string;
-  public pantryName: string;
+  public date: string;
+  public name: string;
   getPantrySub: Subscription;
   public viewType: 'card' | 'list' = 'card';
 
@@ -30,8 +31,8 @@ export class PantryListComponent implements OnInit, OnDestroy {
     this.unsub();
     this.getPantrySub = this.pantryService.getPantrys({
       prodID: this.prodID,
-      date: this.pantryPurchaseDate,
-      name: this.pantryName,
+      date: this.date,
+      name: this.name,
     }).subscribe(returnedPantrys => {
       this.serverFilteredPantrys = returnedPantrys;
       this.updateFilter();
@@ -43,8 +44,8 @@ export class PantryListComponent implements OnInit, OnDestroy {
     this.filteredPantrys = this.pantryService.filterPantrys(
       this.serverFilteredPantrys, {
         prodID: this.prodID,
-        date: this.pantryPurchaseDate,
-        name: this.pantryName,
+        date: this.date,
+        name: this.name,
       });
   }
 

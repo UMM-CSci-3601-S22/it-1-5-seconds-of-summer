@@ -37,14 +37,14 @@
             <mat-form-field class="input-field">
               <mat-label>PurchaseDate</mat-label>
               <input matInput data-test="pantryPurchaseDateInput" placeholder="Filter by purchaseDate"
-              [(ngModel)]="pantryPurchaseDate" (input)="updateFilter()">
+              [(ngModel)]="date" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="input-field">
               <mat-label>Name</mat-label>
               <input matInput data-test="pantryNameInput" placeholder="Filter by name"
-              [(ngModel)]="pantryName" (input)="updateFilter()">
+              [(ngModel)]="name" (input)="updateFilter()">
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
           </div>

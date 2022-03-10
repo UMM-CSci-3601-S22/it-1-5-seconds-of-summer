@@ -12,13 +12,9 @@ export class PantryService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getPantrys(filters?: {
-    name?: string;
-    prodID?: string;
-    date?: string; }): Observable<Pantry[]> {
+  getPantrys(filters?: { name?: string; prodID?: string; date?: string }): Observable<Pantry[]> {
 
     let httpParams: HttpParams = new HttpParams();
-
     if (filters) {
       if (filters.name) {
         httpParams = httpParams.set('name', filters.name);
@@ -63,7 +59,7 @@ export class PantryService {
     if (filters.prodID) {
       filters.prodID = filters.prodID.toLowerCase();
 
-      filteredPantrys = filteredPantrys.filter(pantry => pantry.date.toLowerCase().indexOf(filters.prodID) !== -1);
+      filteredPantrys = filteredPantrys.filter(pantry => pantry.prodID.toLowerCase().indexOf(filters.prodID) !== -1);
     }
 
     return filteredPantrys;

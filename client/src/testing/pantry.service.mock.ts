@@ -12,24 +12,21 @@ export class MockPantryService extends PantryService {
   static testPantry: Pantry[] = [
     {
       _id: 'fried chicken_id',
-      productId: 'fried chicken_id',
-      purchaseDate: 'May 15, 2022',
-      tags: 'fried',
-      notes: 'This is fried chicken, by KFC'
+      prodID: 'bruh',
+      date: 'May 15, 2022',
+      name: 'Chris'
     },
     {
-      _id: 'roasted bread_id',
-      productId: 'roasted bread_id',
-      purchaseDate: 'Aug 23, 2021',
-      tags: 'Roasted',
-      notes: 'This is roasted steak, by SomeBread'
+      _id: '1',
+      prodID: 'cap',
+      date: 'May 15, 2022',
+      name: 'Peanut'
     },
     {
-      _id: 'chocolate cookies_id',
-      productId: 'chocolate cookies_id',
-      purchaseDate: 'Mar 9, 2022',
-      tags: 'Chocolate',
-      notes: 'This is chocolate cookies, by CookieCompany'
+      _id: '2',
+      prodID: 'brim',
+      date: 'May 15, 2022',
+      name: 'pog'
     }
   ];
 
@@ -37,12 +34,11 @@ export class MockPantryService extends PantryService {
     super(null);
   }
 
-  getPantry(filters: {
-    _id: string;
-    productId: string;
-    purchaseDate: string;
-    tags: string;
-    notes: string; }): Observable<Pantry[]> {
+  getPantrys(filters: {
+    prodID?: string;
+    date?: string;
+    name?: string;
+  }): Observable<Pantry[]> {
     // Just return the test pantrys regardless of what filters are passed in
     return of(MockPantryService.testPantry);
   }
