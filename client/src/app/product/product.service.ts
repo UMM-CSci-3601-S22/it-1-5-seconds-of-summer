@@ -76,13 +76,6 @@ export class ProductService {
       filteredProducts = filteredProducts.filter(product => product.store.indexOf(filters.store) !== -1);
     }
 
-    filteredProducts.slice(0, filters.lifespan);
-    // }
-    // Filter by threshold
-    if (filters.threshold) {
-      filteredProducts = filteredProducts.slice(0, filters.threshold);
-    }
-
     return filteredProducts;
   }
 

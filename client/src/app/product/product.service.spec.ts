@@ -89,25 +89,69 @@ describe('Product service: ', () => {
     req.flush(testProducts);
   });
 
-  it('getProducts() calls api/product with filter parameter \'deli\'', () => {
+  it('getUsers() calls api/users with multiple filter parameters', () => {
 
-    productService.getProducts({ category: 'deli', description: 'Delicious fried chicken legs and wings', notes: 'chicken'
-}).subscribe(
-      products => expect(products).toBe(testProducts)
+    productService.getProducts({
+    productName: 'fried chicken',
+    description: 'Delicious fried chicken legs and wings',
+    brand: 'KFC',
+    category: 'deli',
+    store: 'willies',
+    location: 'UMM Student Center Store',
+    notes: 'chicken',
+    lifespan: 2,
+    threshold: 23, }).subscribe(
+      users => expect(users).toBe(testProducts)
     );
 
     // Specify that (exactly) one request will be made to the specified URL with the role parameter.
     const req = httpTestingController.expectOne(
-      (request) => request.url.startsWith(productService.productUrl) && request.params.has('category')
+      (request) => request.url.startsWith(productService.productUrl)
+        && request.params.has('productName') && request.params.has('store') && request.params.has('threshold')
     );
 
     // Check that the request made to that URL was a GET request.
     expect(req.request.method).toEqual('GET');
 
-    // Check that the role parameter was 'admin'
-    expect(req.request.params.get('category')).toEqual('deli');
+    // Check that the role parameters are correct
+    expect(req.request.params.get('productName')).toEqual('fried chicken');
+    expect(req.request.params.get('store')).toEqual('willies');
+    expect(req.request.params.get('threshold')).toEqual('23');
 
     req.flush(testProducts);
+  });
+
+  it('getUserById() calls api/users/id', () => {
+    const targetProducts: Product = testProducts[1];
+    const targetId: string = targetProducts._id;
+    productService.getProductById(targetId).subscribe(
+      user => expect(user).toBe(targetProducts)
+    );
+
+    const expectedUrl: string = productService.productUrl + '/' + targetId;
+    const req = httpTestingController.expectOne(expectedUrl);
+    expect(req.request.method).toEqual('GET');
+    req.flush(targetProducts);
+  });
+
+  it('filterProducts() filters by productName', () => {
+    expect(testProducts.length).toBe(3);
+    const productName = 'd';
+    expect(productService.filterProducts(testProducts, { productName }).length).toBe(2);
+  });
+
+  it('filterProducts() filters by store', () => {
+    expect(testProducts.length).toBe(3);
+    const productStore = 'willies';
+    expect(productService.filterProducts(testProducts, { store: productStore }).length).toBe(1);
+  });
+
+  it('filterProducts() filters by productName, store, and threshold', () => {
+    expect(testProducts.length).toBe(3);
+    const productName = 'd';
+    const productStore = 'willies';
+    const productThreshold = 23;
+    expect(productService.filterProducts(testProducts, { productName, store:productStore }).length).toBe(1);
   });
 
   it('addProduct() posts to api/products', () => {
