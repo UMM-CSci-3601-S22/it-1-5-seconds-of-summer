@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Shoppinglist, Category, ShoppingStore } from '../shoppinglist';
+import { Shoppinglist, ShoppingStore } from '../shoppinglist';
 import { ShoppinglistService } from '../shoppinglist.service';
 
 @Component({
@@ -16,7 +16,6 @@ export class ShoppinglistListComponent implements OnInit, OnDestroy {
   public shoppinglistName: string;
   public shoppinglistDescription: string;
   public shoppinglistBrand: string;
-  public shoppinglistCategory: Category;
   public shoppinglistStore: ShoppingStore;
   public shoppinglistLocation: string;
   public shoppinglistNotes: string;
@@ -35,16 +34,9 @@ export class ShoppinglistListComponent implements OnInit, OnDestroy {
   getShoppinglistsFromServer(): void {
     this.unsub();
     this.getShoppinglistSub = this.shoppinglistService.getShoppinglists({
-      name: this.shoppinglistName,
-      description: this.shoppinglistDescription,
-      brand: this.shoppinglistBrand,
-      category: this.shoppinglistCategory,
-      store: this.shoppinglistStore,
-      location: this.shoppinglistLocation,
-      notes: this.shoppinglistNotes,
-      tags: this.shoppinglistTags,
-      lifespan: this.shoppinglistLifespan,
-      threshold: this.shoppinglistThreshold
+      productName: this.shoppinglistName,
+        store: this.shoppinglistStore,
+        quantity: this.shoppinglistThreshold
     }).subscribe(returnedShoppinglists => {
       this.serverFilteredShoppinglists = returnedShoppinglists;
       this.updateFilter();
@@ -55,16 +47,9 @@ export class ShoppinglistListComponent implements OnInit, OnDestroy {
   public updateFilter(): void {
     this.filteredShoppinglists = this.shoppinglistService.filterShoppinglists(
       this.serverFilteredShoppinglists, {
-        name: this.shoppinglistName,
-        description: this.shoppinglistDescription,
-        brand: this.shoppinglistBrand,
-        category: this.shoppinglistCategory,
+        productName: this.shoppinglistName,
         store: this.shoppinglistStore,
-        location: this.shoppinglistLocation,
-        notes: this.shoppinglistNotes,
-        tags: this.shoppinglistTags,
-        lifespan: this.shoppinglistLifespan,
-        threshold: this.shoppinglistThreshold
+        quantity: this.shoppinglistThreshold
       });
   }
 

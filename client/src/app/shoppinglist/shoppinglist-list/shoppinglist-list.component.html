@@ -41,29 +41,15 @@
             <!-- Examples of filtering in XXX (update after decide) -->
             <!-- Current the code below are filter on Server -->
 
-            <mat-form-field class="input-field">
-              <mat-label>Category</mat-label>
-              <mat-select (selectionChange)="getShoppinglistsFromServer()" [(ngModel)]="shoppinglistCategory" data-test="shoppinglistCategorySelect">
-                <mat-option>--</mat-option>
-                <mat-option value="dry goods">Dry goods</mat-option>
-                <mat-option value="bakery">Bakery</mat-option>
-                <mat-option value="produce">Produce</mat-option>
-                <mat-option value="deli">Deli</mat-option>
-                <mat-option value="canned good">Canned good</mat-option>
-                <mat-option value="cereals">Cereals</mat-option>
-                <mat-option value="seafood">Seafood</mat-option>
-                <mat-option value="desserts">Desserts</mat-option>
-              </mat-select>
-              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
-            </mat-form-field>
+
 
             <mat-form-field class="input-field">
               <mat-label>Store</mat-label>
               <mat-select (selectionChange)="getShoppinglistsFromServer()" [(ngModel)]="shoppinglistStore" data-test="shoppinglistStoreSelect">
                 <mat-option>--</mat-option>
-                <mat-option value="willeys">Willey's</mat-option>
-                <mat-option value="pomme de terre food coop">Pomme de Terre Food Coop</mat-option>
-                <mat-option value="other">Other</mat-option>
+                <mat-option value="willies">Willey's</mat-option>
+                <mat-option value="coop">Pomme de Terre Food Coop</mat-option>
+
               </mat-select>
               <mat-hint>Filtered on XXX (Need Update)</mat-hint>
             </mat-form-field>
@@ -100,12 +86,10 @@
           <mat-nav-list class="shoppinglist-nav-list">
             <h3 mat-subheader>Shoppinglists</h3>
             <a mat-list-item *ngFor="let shoppinglist of this.filteredShoppinglists" [routerLink]="['/shoppinglist', shoppinglist._id]" class="shoppinglist-list-item">
-              <img matListImage [src]="shoppinglist.image" *ngIf="this.shoppinglist.image">
-              <h4 matLine class="shoppinglist-list-category"> {{shoppinglist.category}} </h4>
               <h4 matLine class="shoppinglist-list-store"> {{shoppinglist.store}} </h4>
-              <p matLine class="shoppinglist-list-name"> {{shoppinglist.name}} </p>
-              <p matLine class="shoppinglist-list-brand"> {{shoppinglist.brand}} </p>
-              <p matLine class="shoppinglist-list-notes"> {{shoppinglist.notes}} </p>
+              <p matLine class="shoppinglist-list-name"> {{shoppinglist.productName}} </p>
+              <p matLine class="shoppinglist-list-quantity"> {{shoppinglist.quantity}} </p>
+
             </a>
           </mat-nav-list>
         </mat-card-content>
