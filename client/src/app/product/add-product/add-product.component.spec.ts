@@ -41,7 +41,7 @@ describe('AddProductComponent', () => {
     addProductComponent = fixture.componentInstance;
     addProductComponent.ngOnInit();
     fixture.detectChanges();
-    addProductForm = addProductComponent.addProductCtrl;
+    addProductForm = addProductComponent.addProductForm;
     expect(addProductForm).toBeDefined();
     expect(addProductForm.controls).toBeDefined();
   });
@@ -66,7 +66,7 @@ describe('AddProductComponent', () => {
     let nameControl: AbstractControl;
 
     beforeEach(() => {
-      nameControl = addProductComponent.addProductCtrl.controls.name;
+      nameControl = addProductComponent.addProductForm.controls.name;
     });
 
     it('should not allow empty names', () => {
