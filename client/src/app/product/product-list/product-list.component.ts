@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product, ProductCategory, ShoppingStore } from '../product';
 import { ProductService } from '../product.service';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-product-list',

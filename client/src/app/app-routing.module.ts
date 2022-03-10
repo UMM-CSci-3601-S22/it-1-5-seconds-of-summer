@@ -8,7 +8,6 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ProductProfileComponent } from './product/product-profile/product-profile.component';
 import { PantryListComponent } from './pantry/pantry-list/pantry-list.component';
-import { PantryProfileComponent } from './pantry/pantry-profile/pantry-profile.component';
 import { ShoppinglistProfileComponent } from './shoppinglist/shoppinglist-profile/shoppinglist-profile.component';
 import { ShoppinglistListComponent } from './shoppinglist/shoppinglist-list/shoppinglist-list.component';
 import { AddPantryComponent } from './pantry/add-pantry/add-pantry.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
   {path: 'shoppinglist/:id', component: ShoppinglistProfileComponent},
   {path: 'pantry', component: PantryListComponent},
   {path: 'pantry/new', component: AddPantryComponent},
-  {path: 'pantry/:id', component: PantryProfileComponent},
   {path: 'product', component: ProductListComponent},
   {path: 'product/new', component: AddProductComponent},
   {path: 'product/:id', component: ProductProfileComponent},
