@@ -1,16 +1,10 @@
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-
-export interface Tag {
-  keyword: string;
-}
 
 @Component({
   selector: 'app-add-product',

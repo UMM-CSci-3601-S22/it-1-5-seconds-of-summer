@@ -10,7 +10,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockProductService } from 'src/testing/product.service.mock';
 import { AddProductComponent } from './add-product.component';
 import { ProductService } from '../product.service';
-import { MatChipInputEvent } from '@angular/material/chips';
 
 describe('AddProductComponent', () => {
   let addProductComponent: AddProductComponent;
