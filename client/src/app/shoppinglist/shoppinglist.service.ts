@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ShoppinglistService {
-  readonly shoppinglistUrl: string = environment.apiUrl + 'shoppinglist';
+  readonly shoppinglistUrl: string = environment.apiUrl + 'shoppingList';
 
   constructor(private httpClient: HttpClient) {
   }

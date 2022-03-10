@@ -89,7 +89,7 @@ describe('Product service: ', () => {
     req.flush(testProducts);
   });
 
-  it('getUsers() calls api/users with multiple filter parameters', () => {
+  it('getProducts() calls api/products with multiple filter parameters', () => {
 
     productService.getProducts({
     productName: 'fried chicken',
@@ -101,7 +101,7 @@ describe('Product service: ', () => {
     notes: 'chicken',
     lifespan: 2,
     threshold: 23, }).subscribe(
-      users => expect(users).toBe(testProducts)
+      products => expect(products).toBe(testProducts)
     );
 
     // Specify that (exactly) one request will be made to the specified URL with the role parameter.
@@ -121,11 +121,11 @@ describe('Product service: ', () => {
     req.flush(testProducts);
   });
 
-  it('getUserById() calls api/users/id', () => {
+  it('getProductById() calls api/products/id', () => {
     const targetProducts: Product = testProducts[1];
     const targetId: string = targetProducts._id;
     productService.getProductById(targetId).subscribe(
-      user => expect(user).toBe(targetProducts)
+      product => expect(product).toBe(targetProducts)
     );
 
     const expectedUrl: string = productService.productUrl + '/' + targetId;
@@ -146,12 +146,11 @@ describe('Product service: ', () => {
     expect(productService.filterProducts(testProducts, { store: productStore }).length).toBe(1);
   });
 
-  it('filterProducts() filters by productName, store, and threshold', () => {
+  it('filterProducts() filters by productName and store', () => {
     expect(testProducts.length).toBe(3);
     const productName = 'd';
     const productStore = 'willies';
-    const productThreshold = 23;
-    expect(productService.filterProducts(testProducts, { productName, store:productStore }).length).toBe(1);
+    expect(productService.filterProducts(testProducts, { productName, store: productStore }).length).toBe(1);
   });
 
   it('addProduct() posts to api/products', () => {
