@@ -2,10 +2,11 @@
   <mat-card-header>
     <!-- <img mat-card-image [src]="this.product.image" class="product-image" *ngIf="this.product.image"> -->
     <mat-card-title class="product-card-name">{{ this.product.productName }}</mat-card-title>
+    <br>
     <!-- <mat-card-subtitle class="product-card-brand">{{ this.product.brand }} | {{ this.product.category }}</mat-card-subtitle>
     <mat-card-subtitle class="product-card-category">{{ this.product.category }}</mat-card-subtitle> -->
-    <mat-card-subtitle>Store: <span class="product-card-store">{{ this.product.store }}</span></mat-card-subtitle>
-    <mat-card-subtitle>Threshold x <span class="product-card-threshold"> {{ this.product.threshold }}</span></mat-card-subtitle>
+    <mat-card-subtitle><i>Store: </i><span class="product-card-store">{{ this.product.store }}</span></mat-card-subtitle>
+    <mat-card-subtitle><i>Threshold </i> x <span class="product-card-threshold"> {{ this.product.threshold }}</span></mat-card-subtitle>
     </mat-card-header>
   <mat-card-content *ngIf="!this.simple">
     <!-- <p>Description: <span class="product-card-description">{{ this.product.description }}</span></p>

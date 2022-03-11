@@ -86,7 +86,9 @@
             <h3 mat-subheader>Products</h3>
             <a mat-list-item *ngFor="let product of this.filteredProducts" [routerLink]="['/products', product._id]" class="product-list-item">
               <!-- <img matListImage [src]="product.image" *ngIf="this.product.image"> -->
-              <h3 matLine class="product-list-name"> {{product.productName}} </h3>
+              <h3 matLine class="product-list-name"><b> {{product.productName}} </b></h3>
+              <p matLine class="product-list-store"><i> Store: </i> {{product.store}} </p>
+              <p matLine class="product-list-threshold"><i>Threshold</i> x {{product.threshold}} </p>
               <!-- <p matLine class="product-list-category"> {{product.category}} </p>
               <p matLine class="product-list-brand"> {{product.brand}} </p> -->
               <!-- <p matLine class="product-list-tags"> {{product.tags}} </p> -->
