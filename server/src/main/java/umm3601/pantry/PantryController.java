@@ -58,13 +58,9 @@ public class PantryController {
   public void getPantry(Context ctx) {
     String id = ctx.pathParam("id");
     Pantry pantry;
-    System.out.println(id);
-    System.out.println(pantryCollection.find().first());
-    System.out.println("Got the first");
 
     try {
       pantry = pantryCollection.find(eq("_id", new ObjectId(id))).first();
-      System.out.println(pantry);
     } catch (IllegalArgumentException e) {
       throw new BadRequestResponse("The requested pantry id wasn't a legal Mongo Object ID.");
     }
@@ -72,7 +68,6 @@ public class PantryController {
       throw new NotFoundResponse("The requested pantry was not found");
     } else {
       ctx.json(pantry);
-      System.out.println(ctx);
     }
   }
 
