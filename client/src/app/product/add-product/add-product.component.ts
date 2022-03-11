@@ -168,7 +168,7 @@ export class AddProductComponent implements OnInit {
       this.snackBar.open('Added Product ' + this.addProductForm.value.productName, null, {
         duration: 2000,
       });
-      this.router.navigate(['/products/', newID]);
+      this.router.navigate(['/products']);
     }, err => {
       this.snackBar.open('Failed to add the product', 'OK', {
         duration: 5000,
