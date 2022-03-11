@@ -1,0 +1,12 @@
+<mat-card class="shoppinglist-card" *ngIf="this.shoppinglist">
+  <mat-card-header>
+    <mat-card-title class="shoppinglist-card-name">{{ this.shoppinglist.productName }}</mat-card-title>
+
+  </mat-card-header>
+  <p>Store: <span class="shoppinglist-card-store">{{ this.shoppinglist.store + ""}}</span></p>
+    <p>Quantity: <span class="shoppinglist-card-quantity">{{ this.shoppinglist.quantity }}</span></p>
+  <mat-card-content *ngIf="!this.simple">
+    <p>Name: <span class="shoppinglist-card-name">{{ this.shoppinglist.productName }}</span></p>
+    <p>Tags: <span class="shoppinglist-card-store">{{ this.shoppinglist.quantity }}</span></p>
+  </mat-card-content>
+</mat-card>

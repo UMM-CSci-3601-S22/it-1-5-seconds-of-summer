@@ -1,0 +1,82 @@
+[
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127a"
+    },
+    "productName": "Tomatoes",
+    "store": "coop",
+    "quantity": 4
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127b"
+    },
+    "productName": "Bread",
+    "store": "willies",
+    "quantity": 12
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127c"
+    },
+    "productName": "Water",
+    "store": "willies",
+    "quantity": 34
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127d"
+    },
+    "productName": "Ketchup",
+    "store": "willies",
+    "quantity": 25
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127e"
+    },
+    "productName": "Peanut Butter",
+    "store": "coop",
+    "quantity": 10
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae223000127f"
+    },
+    "productName": "Count Chocula Cereal",
+    "store": "willies",
+    "quantity": 17
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae2230001280"
+    },
+    "productName": "Honey",
+    "store": "coop",
+    "quantity": 50
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae2230001281"
+    },
+    "productName": "Ham",
+    "store": "willies",
+    "quantity": 93
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae2230001282"
+    },
+    "productName": "Curry",
+    "store": "willies",
+    "quantity": 44
+  },
+  {
+    "_id": {
+      "$oid": "62267f81fc13ae2230001283"
+    },
+    "productName": "Peas",
+    "store": "willies",
+    "quantity": 51
+  }
+]

@@ -1,0 +1,26 @@
+<mat-card class="product-card" *ngIf="this.product">
+  <mat-card-header>
+    <!-- <img mat-card-image [src]="this.product.image" class="product-image" *ngIf="this.product.image"> -->
+    <mat-card-title class="product-card-name">{{ this.product.productName }}</mat-card-title>
+    <br>
+    <!-- <mat-card-subtitle class="product-card-brand">{{ this.product.brand }} | {{ this.product.category }}</mat-card-subtitle>
+    <mat-card-subtitle class="product-card-category">{{ this.product.category }}</mat-card-subtitle> -->
+    <mat-card-subtitle><i>Store: </i><span class="product-card-store">{{ this.product.store }}</span></mat-card-subtitle>
+    <mat-card-subtitle><i>Threshold </i> x <span class="product-card-threshold"> {{ this.product.threshold }}</span></mat-card-subtitle>
+    </mat-card-header>
+  <mat-card-content *ngIf="!this.simple">
+    <!-- <p>Description: <span class="product-card-description">{{ this.product.description }}</span></p>
+    <mat-divider inset></mat-divider>
+    <p>Store: <span class="product-card-store">{{ this.product.store }}</span></p>
+    <p>Location: <span class="product-card-location">{{ this.product.location }}</span></p>
+    <mat-divider inset></mat-divider>
+    <p>Lifespan: <span class="product-card-lifespan">{{ this.product.lifespan }}</span></p>
+    <p>Threshold: <span class="product-card-threshold">{{ this.product.threshold }}</span></p>
+    <mat-divider inset></mat-divider>
+    <p>Notes: <span class="product-card-notes">{{ this.product.notes }}</span></p> -->
+
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-button data-test="viewProfileButton" *ngIf="this.simple" [routerLink]="['/products', this.product._id]">View Profile</button>
+  </mat-card-actions> -->
+</mat-card>

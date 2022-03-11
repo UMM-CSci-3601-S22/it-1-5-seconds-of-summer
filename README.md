@@ -1,7 +1,5 @@
 # CSCI 3601 Iteration Template <!-- omit in toc -->
 
-!["Broken" badge to remind us to fix the URLs on the "real" badges](https://img.shields.io/badge/FIX_BADGES-Badges_below_need_to_be_updated-red)
-
 > **Make sure you update the links for the badges below so they point
 > to _your_ project and not the "starter" copy. You also need to make
 > sure that analysis checks are being run on all pull requests.** See
@@ -15,8 +13,8 @@
 [![Client Build Status](../../actions/workflows/client.yaml/badge.svg)](../../actions/workflows/client.yaml)
 [![End to End Build Status](../../actions/workflows/e2e.yaml/badge.svg)](../../actions/workflows/e2e.yaml)
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/UMM-CSci-3601/3601-iteration-template?branch=main)](https://bettercodehub.com/)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/UMM-CSci-3601/3601-iteration-template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/UMM-CSci-3601/3601-iteration-template/alerts/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/UMM-CSci-3601-S22/it-1-5-seconds-of-summer?branch=main)](https://bettercodehub.com/)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/UUMM-CSci-3601-S22/it-1-5-seconds-of-summer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/UMM-CSci-3601-S22/it-1-5-seconds-of-summer/alerts/)
 
 - [Development](#development)
   - [Common commands](#common-commands)
