@@ -17,7 +17,7 @@ import { PantryProfileComponent } from './pantry/pantry-profile/pantry-profile.c
 // If 'users/:id' came first, it would accidentally catch requests to
 // 'users/new'; the router would just think that the string 'new' is a user ID.
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: PantryListComponent},
   {path: 'users', component: UserListComponent},
   {path: 'users/new', component: AddUserComponent},
   {path: 'users/:id', component: UserProfileComponent},
