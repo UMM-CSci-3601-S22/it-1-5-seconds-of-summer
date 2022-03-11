@@ -119,7 +119,7 @@ export class AddProductComponent implements OnInit {
 
       store: new FormControl('willies', Validators.compose([
         Validators.required,
-        Validators.pattern('^(willies|Coop)$'),
+        Validators.pattern('^(willies|coop)$'),
       ])),
 
       // We allow alphanumeric input and limit the length.

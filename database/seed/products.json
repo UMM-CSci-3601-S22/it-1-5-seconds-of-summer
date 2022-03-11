@@ -3,11 +3,11 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003e9"
     },
-    "productName": "Eggplant - Baby",
+    "productName": "Eggplant",
     "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
     "brand": "Connelly and Sons",
     "category": "canned good",
-    "store": "next generation",
+    "store": "willies",
     "location": "tempor",
     "notes": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
     "lifespan": 16,
@@ -17,11 +17,11 @@
     "_id": {
       "$oid": "62213daefc13ae043f0003ea"
     },
-    "productName": "Dill - Primerba, Paste",
+    "productName": "Dill Pickles",
     "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
     "brand": "Willms, Bashirian and McLaughlin",
     "category": "bakery",
-    "store": "scalable",
+    "store": "coop",
     "location": "non",
     "notes": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
     "lifespan": 4,
@@ -35,38 +35,24 @@
     "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
     "brand": "Schroeder-Wilkinson",
     "category": "bakery",
-    "store": "Ergonomic",
+    "store": "willies",
     "location": "nonummy integer",
     "notes": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
     "lifespan": 33,
     "threshold": 11
-  }
+  },
   {
     "_id": {
       "$oid": "62213daefc13ae043f0003ea"
     },
-    "productName": "Dill - Primerba, Paste",
+    "productName": "Chocolate Bar",
     "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
     "brand": "Willms, Bashirian and McLaughlin",
     "category": "bakery",
-    "store": "scalable",
+    "store": "willies",
     "location": "non",
     "notes": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
     "lifespan": 4,
     "threshold": 15
-  },
-  {
-    "_id": {
-      "$oid": "62213daefc13ae043f0003eb"
-    },
-    "productName": "Sugar - Splenda Sweetener",
-    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-    "brand": "Schroeder-Wilkinson",
-    "category": "bakery",
-    "store": "Ergonomic",
-    "location": "nonummy integer",
-    "notes": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-    "lifespan": 33,
-    "threshold": 11
   }
 ]

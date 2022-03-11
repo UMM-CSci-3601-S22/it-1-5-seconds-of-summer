@@ -35,5 +35,4 @@ export class ShoppinglistProfileComponent implements OnInit, OnDestroy {
       this.getShoppinglistSub.unsubscribe();
     }
   }
-
 }
