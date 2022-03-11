@@ -5,16 +5,31 @@
 
       <!-- Side navigation links -->
 
-      <a mat-list-item routerLink="/" routerLinkActive="drawer-list-item-active"
+      <!-- <a mat-list-item routerLink="/" routerLinkActive="drawer-list-item-active"
         #routerLinkActiveInstance="routerLinkActive" [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
         [routerLinkActiveOptions]="{exact: true}" (click)="drawer.close()">
         <mat-icon matListIcon>home</mat-icon>
         Home
-      </a>
+      </a> -->
 
-      <a mat-list-item routerLink="/users" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+      <!-- <a mat-list-item routerLink="/users" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
         <mat-icon matListIcon>people</mat-icon>
         Users
+      </a> -->
+
+      <a mat-list-item routerLink="/products" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+        <mat-icon matListIcon>loyalty</mat-icon>
+        Product
+      </a>
+
+      <a mat-list-item routerLink="/pantry" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+        <mat-icon matListIcon>dashboard</mat-icon>
+        Pantry
+      </a>
+
+      <a mat-list-item routerLink="/shoppingList" routerLinkActive="drawer-list-item-active" (click)="drawer.close()">
+        <mat-icon matListIcon>add_shopping_cart</mat-icon>
+        Shopping List
       </a>
 
     </mat-nav-list>

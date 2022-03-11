@@ -57,13 +57,9 @@ public class ShoppingListController {
   public void getShoppingList(Context ctx) {
     String id = ctx.pathParam("id");
     ShoppingList shoppingList;
-    System.out.println(id);
-    System.out.println(shoppingListCollection.find().first());
-    System.out.println("Got the first");
 
     try {
       shoppingList = shoppingListCollection.find(eq("_id", new ObjectId(id))).first();
-      System.out.println(shoppingList);
     } catch (IllegalArgumentException e) {
       throw new BadRequestResponse("The requested shoppingList id wasn't a legal Mongo Object ID.");
     }
@@ -71,7 +67,6 @@ public class ShoppingListController {
       throw new NotFoundResponse("The requested shoppingList was not found");
     } else {
       ctx.json(shoppingList);
-      System.out.println(ctx);
     }
   }
 

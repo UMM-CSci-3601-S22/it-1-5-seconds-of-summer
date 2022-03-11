@@ -1,0 +1,114 @@
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-card class="title-card">
+      <mat-card-title class="shoppinglist-list-title">Shopping List</mat-card-title>
+      <mat-card-subtitle class="shoppinglist-list-description">Here is your shopping list!<br>You can see what product you added here.</mat-card-subtitle>
+    </mat-card>
+
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <mat-card class="function-card">
+
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+        <button mat-stroked-button color="primary" value="generateShoppingList">Generate Shopping List</button>
+        <button mat-stroked-button color="primary" value="addProductToPantry">Add Product to Pantry</button>
+      </div>
+
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      class="filter-card">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{panelOpenState ? 'Collapse Filters':'Expand Filters'}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card-content fxLayout="column" >
+
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <!-- Examples of filtering in XXX (update after decide) -->
+            <!-- Current the code below are filter on Server -->
+
+
+
+            <mat-form-field class="input-field">
+              <mat-label>Store</mat-label>
+              <mat-select (selectionChange)="getShoppinglistsFromServer()" [(ngModel)]="shoppinglistStore" data-test="shoppinglistStoreSelect">
+                <mat-option>--</mat-option>
+                <mat-option value="willies">Willey's</mat-option>
+                <mat-option value="coop">Pomme de Terre Food Coop</mat-option>
+
+              </mat-select>
+              <mat-hint>Filtered on XXX (Need Update)</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <br>
+          <div fxLayout="row wrap" fxLayoutGap="10px">
+            <label>View type: </label>
+            <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
+              <mat-radio-button value="card">Card</mat-radio-button>
+              <mat-radio-button value="list">List</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredShoppinglists; else shoppinglistsError" >
+    <!-- Switch between card and list view based on the viewType variable, set above in the mar-radio-group -->
+    <div [ngSwitch]="viewType">
+
+      <!-- Card grid view -->
+      <div *ngSwitchCase="'card'" fxLayout="row wrap" fxLayoutGap="10px" class="shoppinglist-cards-container">
+        <app-shoppinglist-card [simple]="true" *ngFor="let shoppinglist of filteredShoppinglists" class="shoppinglist-card" [shoppinglist]="shoppinglist" fxFlex="1 1 280px"></app-shoppinglist-card>
+      </div>
+
+      <!-- List view -->
+      <mat-card *ngSwitchCase="'list'">
+        <mat-card-content>
+          <mat-nav-list class="shoppinglist-nav-list">
+            <h3 mat-subheader>Shoppinglists</h3>
+            <a mat-list-item *ngFor="let shoppinglist of this.filteredShoppinglists" [routerLink]="['/shoppinglist', shoppinglist._id]" class="shoppinglist-list-item">
+              <h4 matLine class="shoppinglist-list-store"> {{shoppinglist.store}} </h4>
+              <p matLine class="shoppinglist-list-name"> {{shoppinglist.productName}} </p>
+              <p matLine class="shoppinglist-list-quantity"> {{shoppinglist.quantity}} </p>
+
+            </a>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+  <ng-template #shoppinglistsError>
+    <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="shoppinglist-error">
+      <mat-error>
+        There was a problem loading the shoppinglist. Possibly the server is down or perhaps there are network
+        issues.
+      </mat-error>
+      <mat-error>
+        Please wait a bit and try again or start the server.
+      </mat-error>
+    </div>
+  </ng-template>
+
+</div>
+

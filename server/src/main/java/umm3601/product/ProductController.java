@@ -63,13 +63,9 @@ public class ProductController {
   public void getProduct(Context ctx) {
     String id = ctx.pathParam("id");
     Product product;
-    System.out.println(id);
-    System.out.println(productCollection.find().first());
-    System.out.println("Got the first");
 
     try {
       product = productCollection.find(eq("_id", new ObjectId(id))).first();
-      System.out.println(product);
     } catch (IllegalArgumentException e) {
       throw new BadRequestResponse("The requested product id wasn't a legal Mongo Object ID.");
     }
@@ -77,7 +73,6 @@ public class ProductController {
       throw new NotFoundResponse("The requested product was not found");
     } else {
       ctx.json(product);
-      System.out.println(ctx);
     }
   }
 
@@ -87,7 +82,6 @@ public class ProductController {
    * @param ctx a Javalin HTTP context
    */
   public void getProducts(Context ctx) {
-    System.err.println("PLEASe");
     Bson combinedFilter = constructFilter(ctx);
     Bson sortingOrder = constructSortingOrder(ctx);
 
@@ -115,10 +109,7 @@ public class ProductController {
     if (ctx.queryParamMap().containsKey(THRESHOLD_KEY)) {
       int targetThreshold = ctx.queryParamAsClass(THRESHOLD_KEY, Integer.class).get();
       filters.add(eq(THRESHOLD_KEY, targetThreshold));
-      System.err.println(0);
     }
-
-    System.err.println("skips??");
 
     // Combine the list of filters into a single filtering document.
     Bson combinedFilter = filters.isEmpty() ? new Document() : and(filters);
