@@ -3,80 +3,80 @@
     "_id": {
       "$oid": "62267f81fc13ae223000127a"
     },
-    "productName": "Geoffrey",
-    "store": "quam",
+    "productName": "Tomatoes",
+    "store": "coop",
     "quantity": 4
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae223000127b"
     },
-    "productName": "Collin",
-    "store": "sed",
+    "productName": "Bread",
+    "store": "willies",
     "quantity": 12
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae223000127c"
     },
-    "productName": "Sigismund",
-    "store": "eu",
+    "productName": "Water",
+    "store": "willies",
     "quantity": 34
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae223000127d"
     },
-    "productName": "Karly",
-    "store": "sapien",
+    "productName": "Ketchup",
+    "store": "willies",
     "quantity": 25
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae223000127e"
     },
-    "productName": "Karl",
-    "store": "in",
+    "productName": "Peanut Butter",
+    "store": "coop",
     "quantity": 10
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae223000127f"
     },
-    "productName": "Ulrick",
-    "store": "molestie",
+    "productName": "Count Chocula Cereal",
+    "store": "willies",
     "quantity": 17
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae2230001280"
     },
-    "productName": "Dallon",
-    "store": "blandit",
+    "productName": "Honey",
+    "store": "coop",
     "quantity": 50
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae2230001281"
     },
-    "productName": "Nari",
-    "store": "ipsum",
+    "productName": "Ham",
+    "store": "willies",
     "quantity": 93
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae2230001282"
     },
-    "productName": "Briny",
-    "store": "lobortis",
+    "productName": "Curry",
+    "store": "willies",
     "quantity": 44
   },
   {
     "_id": {
       "$oid": "62267f81fc13ae2230001283"
     },
-    "productName": "Coreen",
-    "store": "posuere",
+    "productName": "Peas",
+    "store": "willies",
     "quantity": 51
   }
 ]
